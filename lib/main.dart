@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'login_page.dart';
+import 'package:icebreaker/pages/startup_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,8 +21,9 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.blue,
+        backgroundColor: Colors.white,
       ),
-      home: new LoginPage()
+      home: new StartupPage()
     );
   }
 }

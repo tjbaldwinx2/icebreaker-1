@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatelessWidget {
 
-  State<StatefulWidget> createState() => new _LoginPageState();
+  //State<StatefulWidget> createState() => new _LoginPageState();
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+        appBar: new AppBar(
+          title: new Text('IceBreaker'),
+        ),
+        body: new Text('Hello World'),
+        );
+  }
 
 }
 
-class _LoginPageState extends State<LoginPage>{
-
-  final _formKey = new GlobalKey<FormState>();
-  bool _isLoading = false;
-  String _email = '';
-  String _password = '';
-  bool _isLoginForm = true;
+/*class _LoginPageState extends State<LoginPage>{
 
   @override
   Widget build(BuildContext context) {
@@ -164,5 +168,5 @@ class _LoginPageState extends State<LoginPage>{
         )
       ),
     );
-  }
-}
+  }*/
+//}
