@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "859852549907",
+    "firebase_url": "https://icebreaker-swen444.firebaseio.com",
+    "project_id": "icebreaker-swen444",
+    "storage_bucket": "icebreaker-swen444.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:859852549907:android:d575c9cfa4d0f4803b34e6",
+        "android_client_info": {
+          "package_name": "icebreaker.icebreaker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "859852549907-0c9rdnbaj6hq5k047un9hog0fq1k5rnl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEMlQyU4zXyjhUMYeOCf1se6Cx0RZKhzo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "859852549907-0c9rdnbaj6hq5k047un9hog0fq1k5rnl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
