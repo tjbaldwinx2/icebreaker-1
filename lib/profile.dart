@@ -7,7 +7,8 @@ abstract class Profile {
   Profile(this.firstName, this.lastName, this.email, this.password);
 
   createPosition(String title, String description, String education, String skillsRequired, String skillsDesired, String salary, String timeFrame);
-
+  addType(String type);
+  addInfo(String title, String summary, String education, String experience, String skills);
 }
 
 class RecruiterProfile extends Profile {
@@ -22,14 +23,40 @@ class RecruiterProfile extends Profile {
     this.position = new Position(title, description, education, skillsRequired);
     this.position.addInfo(skillsDesired, salary, timeFrame);
   }
+
+  addInfo(String title, String summary, String education, String experience, String skills) {
+
+  }
+
+  addType(String type) {
+
+  }
 }
 
 class ApplicantProfile extends Profile {
-  ApplicantProfile(String firstName, String lastName, String email, String password):
+  String address;
+  String race;
+  String ethnicity;
+  String disability;
+  String typeOfEmployment;
+  String title;
+  String summary;
+  String education;
+  String experience;
+  String skills;
+  ApplicantProfile(String firstName, String lastName, String email, String password, this.address, this.race, this.ethnicity, this.disability):
         super(firstName, lastName, email, password);
 
-  addInfo() {
+  addType(String type) {
+    this.typeOfEmployment = type;
+  }
 
+  addInfo(String title, String summary, String education, String experience, String skills) {
+    this.title = title;
+    this.summary = summary;
+    this.education = education;
+    this.experience = experience;
+    this.skills = skills;
   }
 
   @override

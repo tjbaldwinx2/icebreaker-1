@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:icebreaker/pages/home_page.dart';
 import 'package:icebreaker/pages/login_page.dart';
 import 'package:icebreaker/globals.dart' as globals;
 import 'package:icebreaker/profile.dart' as profile;
@@ -418,7 +419,7 @@ class SignupState extends State<ApplicantSignup>{
                                   }
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => page2())
+                                      MaterialPageRoute(builder: (context) => HomePage())
                                   );
                                 }
                               }

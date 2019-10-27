@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:icebreaker/pages/home_page.dart';
 import 'package:icebreaker/pages/login_page.dart';
-import 'package:multi_page_form/multi_page_form.dart';
 import 'package:icebreaker/globals.dart' as globals;
 import 'package:icebreaker/profile.dart' as profile;
 
@@ -9,22 +9,6 @@ class RecruiterSignUp extends StatefulWidget {
   SignupState createState() {
     return SignupState();
   }
-}
-
-class SignupData {
-  String firstName = '';
-  String lastName = '';
-  String email = '';
-  String company = '';
-  String title = '';
-  String positionTitle = '';
-  String description = '';
-  String education = '';
-  String skillsRequired = '';
-  String skillsDesired = '';
-  String salary = '';
-  String timeFrame = '';
-  String password;
 }
 
 class SignupState extends State<RecruiterSignUp>{
@@ -40,7 +24,7 @@ class SignupState extends State<RecruiterSignUp>{
   String skillsDesired = '';
   String salary = '';
   String timeFrame = '';
-  String password;
+  String password = '';
   String reenteredPassword;
   final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
@@ -59,9 +43,14 @@ class SignupState extends State<RecruiterSignUp>{
   Widget page1() {
     return new Scaffold(
       body: SingleChildScrollView(
+        padding: EdgeInsets.all(30.0),
         child: Column(
           children: <Widget>[
-            Text('Personal Information'),
+            Text(
+              'Personal Information',
+              style: TextStyle(fontSize: 24),
+              textAlign: TextAlign.center,
+            ),
             TextFormField(
               decoration: const InputDecoration(
                 labelText: 'First Name'
@@ -158,26 +147,38 @@ class SignupState extends State<RecruiterSignUp>{
                 return title == '' ? 'Job title cannot be blank' : null;
               },
             ),
-            RaisedButton(
-              child: new Text('Next'),
-              onPressed: () {
-                if (this._formKey.currentState.validate()) {
-                  globals.currentUser = new profile.RecruiterProfile(
-                      firstName,
-                      lastName,
-                      email,
-                      password,
-                      company,
-                      title
-                  );
-                  print(globals.currentUser);
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => page2())
-                  );
-                }
-              }
-            )
+            Container(
+              padding: EdgeInsets.all(20.0),
+              alignment: Alignment.center,
+              child: ButtonTheme(
+                  minWidth: 200.0,
+                  height: 40.0,
+                  child: RaisedButton(
+                      child: new Text(
+                        'Next',
+                        style: TextStyle(fontSize: 24, color: Color(0xFF1D4489)),
+                      ),
+                      color: Color(0xFF6CB2E5),
+                      onPressed: () {
+                        if (this._formKey.currentState.validate()) {
+                          globals.currentUser = new profile.RecruiterProfile(
+                              firstName,
+                              lastName,
+                              email,
+                              password,
+                              company,
+                              title
+                          );
+                          print(globals.currentUser);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => page2())
+                          );
+                        }
+                      }
+                  )
+              ),
+            ),
           ],
         ),
       )
@@ -187,9 +188,14 @@ class SignupState extends State<RecruiterSignUp>{
   Widget page2() {
     return new Scaffold(
       body: SingleChildScrollView(
+        padding: EdgeInsets.all(30.0),
         child: Column(
           children: <Widget>[
-            Text('Position Information'),
+            Text(
+              'Position Information',
+              style: TextStyle(fontSize: 24),
+              textAlign: TextAlign.center,
+            ),
             TextFormField(
               decoration: const InputDecoration(
                   labelText: 'Position Title'
@@ -227,7 +233,7 @@ class SignupState extends State<RecruiterSignUp>{
               maxLines: null,
               initialValue: skillsRequired,
               validator: (String value) {
-                return skillsRequired == '' ? 'Description cannot be blank' : null;
+                return skillsRequired == '' ? 'Required skills cannot be blank' : null;
               },
             ),
             TextFormField(
@@ -260,7 +266,7 @@ class SignupState extends State<RecruiterSignUp>{
               onChanged: (newValue) {
                 skillsRequired = newValue;
               },
-              initialValue: (salary == -1) ? null : salary.toString()
+              initialValue: (salary == "") ? null : salary.toString()
             ),
             TextFormField(
                 decoration: const InputDecoration(
@@ -271,53 +277,71 @@ class SignupState extends State<RecruiterSignUp>{
                 },
                 initialValue: (timeFrame == '') ? null : timeFrame
             ),
-            Row(
-              children: <Widget>[
-                RaisedButton(
-                    child: new Text('Back'),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => page1())
-                      );
-                    }
-                ),
-                RaisedButton(
-                    child: new Text('Submit'),
-                    onPressed: () {
-                      if (this._formKey.currentState.validate()) {
-                        globals.currentUser.createPosition(
-                            positionTitle,
-                            description,
-                            education,
-                            skillsRequired,
-                            skillsDesired,
-                            salary,
-                            timeFrame
-                        );
-                        if (!globals.allUsers.containsKey(globals.currentUser.email)) {
-                          globals.allUsers[globals.currentUser.email] = globals.currentUser;
-                        }
-                        else {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => LoginPage())
-                          );
-                        }
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => page2())
-                        );
-                      }
-                    }
-                )
-              ],
+            Container(
+                padding: EdgeInsets.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    ButtonTheme(
+                      minWidth: 100.0,
+                      height: 40.0,
+                      child: RaisedButton(
+                          color: Color(0xFF1D4489),
+                          child: new Text(
+                              'Back',
+                              style: TextStyle(fontSize: 24, color: Color(0xFF6CB2E5))
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => page1())
+                            );
+                          }
+                      )
+                    ),
+                    ButtonTheme(
+                        minWidth: 100.0,
+                        height: 40.0,
+                        child: RaisedButton(
+                            child: new Text(
+                              'Submit',
+                              style: TextStyle(fontSize: 24, color: Color(0xFF1D4489)),
+                            ),
+                            color: Color(0xFF6CB2E5),
+                            onPressed: () {
+                              if (this._formKey.currentState.validate()) {
+                                globals.currentUser.createPosition(
+                                    positionTitle,
+                                    description,
+                                    education,
+                                    skillsRequired,
+                                    skillsDesired,
+                                    salary,
+                                    timeFrame
+                                );
+                                if (!globals.allUsers.containsKey(globals.currentUser.email)) {
+                                  globals.allUsers[globals.currentUser.email] = globals.currentUser;
+                                }
+                                else {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => LoginPage())
+                                  );
+                                }
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => HomePage())
+                                );
+                              }
+                            }
+                        )
+                    ),
+                ],
+              )
             )
           ],
         ),
       )
     );
   }
-
-
 }
