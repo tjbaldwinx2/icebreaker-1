@@ -9,7 +9,6 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: <String, WidgetBuilder>{
@@ -24,7 +23,6 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return HomePageState();
   }
 }
@@ -40,18 +38,16 @@ class HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     cardList = _generateCards();
   }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tinder App"),
-        backgroundColor: Colors.purple,
+        title: Text("IceBreaker"),
+        backgroundColor: Color(0xFF6CB2E5),
       ),
       body: Stack(alignment: Alignment.center, children: cardList),
     );
