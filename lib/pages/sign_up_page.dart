@@ -8,16 +8,23 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
       body: Container(
+        padding: EdgeInsets.fromLTRB(0.0, 45.0, 0.0, 0.0),
         child: Column(
           children: <Widget>[
-            RaisedButton(
-              child: new Text('Recruiter'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => RecruiterSignUp())
-                );
-              },
+            ButtonTheme(
+              minWidth: 200.0,
+              height: 40.0,
+              child:
+                RaisedButton(
+                  child: new Text('Recruiter Sign Up'),
+                  color: Color(0xFF6CB2E5),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => RecruiterSignUp())
+                    );
+                  },
+                )
             )
           ],
         ),

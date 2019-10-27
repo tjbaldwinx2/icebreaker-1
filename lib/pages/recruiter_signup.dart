@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:icebreaker/pages/login_page.dart';
 import 'package:multi_page_form/multi_page_form.dart';
 import 'package:icebreaker/globals.dart' as globals;
 import 'package:icebreaker/profile.dart' as profile;
@@ -21,7 +22,7 @@ class SignupData {
   String education = '';
   String skillsRequired = '';
   String skillsDesired = '';
-  double salary = -1;
+  String salary = '';
   String timeFrame = '';
   String password;
 }
@@ -37,7 +38,7 @@ class SignupState extends State<RecruiterSignUp>{
   String education = '';
   String skillsRequired = '';
   String skillsDesired = '';
-  double salary = -1;
+  String salary = '';
   String timeFrame = '';
   String password;
   String reenteredPassword;
@@ -209,6 +210,7 @@ class SignupState extends State<RecruiterSignUp>{
                 description = newValue;
               },
               keyboardType: TextInputType.multiline,
+              maxLines: null,
               initialValue: description,
               validator: (String value) {
                 return description == '' ? 'Description cannot be blank' : null;
@@ -222,39 +224,94 @@ class SignupState extends State<RecruiterSignUp>{
                 skillsRequired = newValue;
               },
               keyboardType: TextInputType.multiline,
+              maxLines: null,
               initialValue: skillsRequired,
               validator: (String value) {
                 return skillsRequired == '' ? 'Description cannot be blank' : null;
               },
             ),
-            RaisedButton(
-                child: new Text('Back'),
-                onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => page1())
-                    );
-                }
+            TextFormField(
+              decoration: const InputDecoration(
+                  labelText: 'Education Level'
+              ),
+              onChanged: (newValue) {
+                education = newValue;
+              },
+              initialValue: education,
+              validator: (String value) {
+                return education == '' ? 'Education level cannot be blank' : null;
+              },
             ),
-            RaisedButton(
-                child: new Text('Submit'),
-                onPressed: () {
-                  if (this._formKey.currentState.validate()) {
-                    globals.currentUser.createPosition(
-                        positionTitle,
-                        description,
-                        education,
-                        skillsRequired,
-                        skillsDesired,
-                        salary,
-                        timeFrame
-                    );
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => page2())
-                    );
-                  }
-                }
+            TextFormField(
+              decoration: const InputDecoration(
+                  labelText: 'Desired Skills'
+              ),
+              onChanged: (newValue) {
+                skillsDesired = newValue;
+              },
+              keyboardType: TextInputType.multiline,
+              maxLines: null,
+              initialValue: skillsDesired == '' ? null : skillsDesired
+            ),
+            TextFormField(
+              decoration: const InputDecoration(
+                  labelText: 'Salary'
+              ),
+              onChanged: (newValue) {
+                skillsRequired = newValue;
+              },
+              initialValue: (salary == -1) ? null : salary.toString()
+            ),
+            TextFormField(
+                decoration: const InputDecoration(
+                    labelText: 'Time Frame'
+                ),
+                onChanged: (newValue) {
+                  timeFrame = newValue;
+                },
+                initialValue: (timeFrame == '') ? null : timeFrame
+            ),
+            Row(
+              children: <Widget>[
+                RaisedButton(
+                    child: new Text('Back'),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => page1())
+                      );
+                    }
+                ),
+                RaisedButton(
+                    child: new Text('Submit'),
+                    onPressed: () {
+                      if (this._formKey.currentState.validate()) {
+                        globals.currentUser.createPosition(
+                            positionTitle,
+                            description,
+                            education,
+                            skillsRequired,
+                            skillsDesired,
+                            salary,
+                            timeFrame
+                        );
+                        if (!globals.allUsers.containsKey(globals.currentUser.email)) {
+                          globals.allUsers[globals.currentUser.email] = globals.currentUser;
+                        }
+                        else {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => LoginPage())
+                          );
+                        }
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => page2())
+                        );
+                      }
+                    }
+                )
+              ],
             )
           ],
         ),

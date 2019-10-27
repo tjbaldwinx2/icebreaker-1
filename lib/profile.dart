@@ -6,7 +6,7 @@ abstract class Profile {
 
   Profile(this.firstName, this.lastName, this.email, this.password);
 
-  createPosition(String title, String description, String education, String skillsRequired, String skillsDesired, double salary, String timeFrame);
+  createPosition(String title, String description, String education, String skillsRequired, String skillsDesired, String salary, String timeFrame);
 
 }
 
@@ -18,7 +18,7 @@ class RecruiterProfile extends Profile {
   RecruiterProfile(String firstName, String lastName, String email, String password, this.company, this.title):
     super(firstName, lastName, email, password);
 
-  createPosition(String title, String description, String education, String skillsRequired, String skillsDesired, double salary, String timeFrame) {
+  createPosition(String title, String description, String education, String skillsRequired, String skillsDesired, String salary, String timeFrame) {
     this.position = new Position(title, description, education, skillsRequired);
     this.position.addInfo(skillsDesired, salary, timeFrame);
   }
@@ -33,7 +33,7 @@ class ApplicantProfile extends Profile {
   }
 
   @override
-  createPosition(String title, String description, String education, String skillsRequired, String skillsDesired, double salary, String timeFrame) {
+  createPosition(String title, String description, String education, String skillsRequired, String skillsDesired, String salary, String timeFrame) {
   }
 }
 
@@ -43,16 +43,16 @@ class Position {
   String education;
   String skillsRequired;
   String skillsDesired;
-  double salary;
+  String salary;
   String timeFrame;
 
   Position(this.title, this.description, this.education, this.skillsRequired);
 
-  addInfo(String skillsDesired, double salary, String timeFrame) {
+  addInfo(String skillsDesired, String salary, String timeFrame) {
     if (!(skillsDesired == '')) {
       addSkillsDesired(skillsDesired);
     }
-    if (!(salary == -1)) {
+    if (!(salary == '')) {
       addSalary(salary);
     }
     if (!(timeFrame == '')) {
@@ -64,7 +64,7 @@ class Position {
     this.skillsDesired = skillsDesired;
   }
 
-  addSalary(double salary) {
+  addSalary(String salary) {
     this.salary = salary;
   }
 
