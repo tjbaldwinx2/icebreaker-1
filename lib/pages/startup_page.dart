@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:icebreaker/pages/login_page.dart';
+import 'package:icebreaker/pages/sign_up_page.dart';
 
 class StartupPage extends StatefulWidget {
 
@@ -70,14 +72,32 @@ class _StartupPageState extends State<StartupPage> {
       padding: EdgeInsets.fromLTRB(0.0, 45.0, 0.0, 0.0),
       child: Column(
         children: <Widget>[
-          new RaisedButton(
-            child: new Text("Sign in"),
-            color: Colors.blueAccent[600],
-            onPressed: null,),
-          new RaisedButton(
-            child: new Text("Sign up"),
-            color: Colors.blue,
-             onPressed: null,
+          ButtonTheme(
+            minWidth: 200.0,
+            height: 40.0,
+            child: RaisedButton(
+              child: new Text("Sign in", style: TextStyle(fontSize: 24, color: Color(0xFF1D4489)),),
+              color: Color(0xFF6CB2E5),
+              onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                );
+              },),
+          ),
+          ButtonTheme(
+            minWidth: 200.0,
+            height: 40.0,
+            child: RaisedButton(
+              child: new Text("Sign up", style: TextStyle(fontSize: 24, color: Color(0xFF6CB2E5)),),
+              color: Color(0xFF1D4489),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignUpPage()),
+                );
+              },
+            ),
           )
         ],
       ),
