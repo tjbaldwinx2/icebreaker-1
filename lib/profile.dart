@@ -1,9 +1,13 @@
-class Profile {
+abstract class Profile {
   String firstName;
   String lastName;
   String email;
+  String password;
 
-  Profile(this.firstName, this.lastName, this.email);
+  Profile(this.firstName, this.lastName, this.email, this.password);
+
+  createPosition(String title, String description, String education, String skillsRequired, String skillsDesired, double salary, String timeFrame);
+
 }
 
 class RecruiterProfile extends Profile {
@@ -11,8 +15,8 @@ class RecruiterProfile extends Profile {
   String title;
   Position position;
 
-  RecruiterProfile(String firstName, String lastName, String email, this.company, this.title):
-    super(firstName, lastName, email);
+  RecruiterProfile(String firstName, String lastName, String email, String password, this.company, this.title):
+    super(firstName, lastName, email, password);
 
   createPosition(String title, String description, String education, String skillsRequired, String skillsDesired, double salary, String timeFrame) {
     this.position = new Position(title, description, education, skillsRequired);
@@ -21,11 +25,15 @@ class RecruiterProfile extends Profile {
 }
 
 class ApplicantProfile extends Profile {
-  ApplicantProfile(String firstName, String lastName, String email):
-        super(firstName, lastName, email);
+  ApplicantProfile(String firstName, String lastName, String email, String password):
+        super(firstName, lastName, email, password);
 
   addInfo() {
 
+  }
+
+  @override
+  createPosition(String title, String description, String education, String skillsRequired, String skillsDesired, double salary, String timeFrame) {
   }
 }
 
