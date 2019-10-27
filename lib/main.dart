@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:icebreaker/matching_card.dart';
 import 'matching.dart';
 
 void main() => runApp(MyApp());
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: Matching(),
+      home: new MatchingCard(),
     );
   }
 }
