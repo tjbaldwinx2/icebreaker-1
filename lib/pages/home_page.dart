@@ -3,6 +3,7 @@ import 'package:icebreaker/pages/messaging.dart';
 import 'package:icebreaker/pages/startup_page.dart';
 import 'package:icebreaker/profile_card.dart';
 import 'package:icebreaker/CardDetail.dart';
+import 'package:icebreaker/globals.dart' as globals;
 
 void main() {
   runApp(MyApp());
@@ -54,6 +55,7 @@ class HomePageState extends State<HomePage> {
           IconButton(
             icon: Icon(Icons.exit_to_app),
             onPressed: () {
+              globals.currentUser = null;
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => StartupPage()));
             },
