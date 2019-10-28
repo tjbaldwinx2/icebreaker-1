@@ -22,12 +22,13 @@ class MessagingTexts extends StatelessWidget {
   }
 
   Widget message1(var contents){
+    var value = '';
     return new Stack(
         children: <Widget>[
           Align(
             alignment: Alignment.topLeft,
             child: Container(
-              child: Text("Scott")
+              child: Text("Scott", textAlign: TextAlign.end,)
 
 
             )
@@ -35,11 +36,14 @@ class MessagingTexts extends StatelessWidget {
           Align(
             alignment: Alignment.bottomLeft,
             child:TextField(
-              onSubmitted: onMessageSubmitted,
-              controller: myController,
-              decoration: InputDecoration(
-                fillColor: Colors.black12, filled: true
-              ),
+              onChanged: (text){
+                value = text;
+              },
+              //onSubmitted: onMessageSubmitted,
+              //controller: myController,
+              //decoration: InputDecoration(
+                //fillColor: Colors.black12, filled: true
+              //),
 
             ),
           ),
@@ -48,6 +52,13 @@ class MessagingTexts extends StatelessWidget {
       );
 
   }
+
+  Widget newMessage(var text){
+    return new Card(
+      child: Text(text),
+    );
+  }
+
   void onMessageSubmitted(String message) async {
 
   }
