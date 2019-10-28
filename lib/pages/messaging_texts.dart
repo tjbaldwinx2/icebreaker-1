@@ -17,7 +17,7 @@ class MessagingTexts extends StatelessWidget {
   Widget appBar(var name){
     return new AppBar(
       title: Text(name),
-      backgroundColor: Color(0xFF1D4489),
+      backgroundColor: Color(0xFF6CB2E5),
     );
   }
 

@@ -27,6 +27,9 @@ class SignupState extends State<ApplicantSignup>{
   String skills = '';
   String password = '';
   String reenteredPassword;
+  static GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
+  static GlobalKey<FormState> _formKey2 = new GlobalKey<FormState>();
+  static GlobalKey<FormState> _formKey3 = new GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +41,6 @@ class SignupState extends State<ApplicantSignup>{
   }
 
   Widget page1() {
-    final _formKey = new GlobalKey<FormState>();
     return new Scaffold(
         body: SingleChildScrollView(
           padding: EdgeInsets.all(30.0),
@@ -228,12 +230,11 @@ class SignupState extends State<ApplicantSignup>{
   }
 
   Widget page2() {
-    final _formKey = new GlobalKey<FormState>();
     return new Scaffold(
       body: SingleChildScrollView(
         padding: EdgeInsets.all(30),
         child: Form(
-          key: _formKey,
+          key: _formKey2,
           child: Column(
             children: <Widget>[
               Text(
@@ -290,7 +291,7 @@ class SignupState extends State<ApplicantSignup>{
                               ),
                               color: Color(0xFF6CB2E5),
                               onPressed: () {
-                                if (_formKey.currentState.validate()) {
+                                if (_formKey2.currentState.validate()) {
                                   globals.currentUser.addType(typeOfEmployment);
                                   Navigator.push(
                                       context,
@@ -312,12 +313,11 @@ class SignupState extends State<ApplicantSignup>{
   }
 
   Widget page3() {
-    final _formKey = new GlobalKey<FormState>();
     return new Scaffold(
         body: SingleChildScrollView(
           padding: EdgeInsets.all(30.0),
           child: Form(
-            key: _formKey,
+            key: _formKey3,
             child: Column(
               children: <Widget>[
                 Text(
@@ -420,7 +420,7 @@ class SignupState extends State<ApplicantSignup>{
                                 ),
                                 color: Color(0xFF6CB2E5),
                                 onPressed: () {
-                                  if (_formKey.currentState.validate()) {
+                                  if (_formKey3.currentState.validate()) {
                                     globals.currentUser.addInfo(
                                         title,
                                         summary,

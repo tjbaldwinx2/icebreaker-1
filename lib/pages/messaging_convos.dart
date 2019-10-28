@@ -19,15 +19,15 @@ class MessagingConvos extends StatelessWidget{
 
   Widget appBar(){
     return new AppBar(
-      title: Text("Open Conversations", style: TextStyle(color: Color(0xFF6CB2E5)),),
-      backgroundColor: Color(0xFF1D4489),
+      title: Text("Open Conversations"),
+      backgroundColor: Color(0xFF6CB2E5),
     );
   }
 
   Widget userCard(var name, context){
     return new RaisedButton(
-      color: Colors.blue,
-      child: name,
+      color: Color(0xFF1D4489),
+      child: Text(name),
       onPressed: () {
         Navigator.push(
           context,
@@ -39,12 +39,12 @@ class MessagingConvos extends StatelessWidget{
 
   Widget getButtons(context){
     List<Widget> list = new List<Widget>();
-    list.add(userCard(Text("Giselle Cole"), context));
-    list.add(userCard(Text("Tyler Baldwin"), context));
-    list.add(userCard(Text("Taylor Berry"), context));
-    list.add(userCard(Text("Scott Wilson"), context));
-    list.add(userCard(Text("Cinderblock"), context));
-    list.add(userCard(Text("Sidney Davis"), context));
+    list.add(userCard("Giselle Cole", context));
+    list.add(userCard("Tyler Baldwin", context));
+    list.add(userCard("Taylor Berry", context));
+    list.add(userCard("Scott Wilson", context));
+    list.add(userCard("Cinderblock", context));
+    list.add(userCard("Sidney Davis", context));
     globals.allUsers.forEach((k, v) => list.add(userCard(Text("${v.firstName} ${v.lastName}"), context)));
     return new Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
