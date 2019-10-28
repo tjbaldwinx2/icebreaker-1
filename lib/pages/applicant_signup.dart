@@ -27,6 +27,9 @@ class SignupState extends State<ApplicantSignup>{
   String skills = '';
   String password = '';
   String reenteredPassword;
+  static GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
+  static GlobalKey<FormState> _formKey2 = new GlobalKey<FormState>();
+  static GlobalKey<FormState> _formKey3 = new GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +41,6 @@ class SignupState extends State<ApplicantSignup>{
   }
 
   Widget page1() {
-    final _formKey = new GlobalKey<FormState>();
     return new Scaffold(
         body: SingleChildScrollView(
           padding: EdgeInsets.all(30.0),
@@ -228,7 +230,6 @@ class SignupState extends State<ApplicantSignup>{
   }
 
   Widget page2() {
-    final _formKey = new GlobalKey<FormState>();
     return new Scaffold(
       body: SingleChildScrollView(
         padding: EdgeInsets.all(30),
@@ -312,7 +313,6 @@ class SignupState extends State<ApplicantSignup>{
   }
 
   Widget page3() {
-    final _formKey = new GlobalKey<FormState>();
     return new Scaffold(
         body: SingleChildScrollView(
           padding: EdgeInsets.all(30.0),
