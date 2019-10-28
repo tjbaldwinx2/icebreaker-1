@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
+import 'package:icebreaker/globals.dart' as globals;
 
 class LoginPage extends StatefulWidget {
 
@@ -8,53 +9,42 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage>{
+  final _formKey = new GlobalKey<FormState>();
+  String email = '';
+  String password = '';
+
 
   @override
   Widget build(BuildContext context) {
-    return new Column(
-      children: <Widget>[
-        logo(),
-        emailField()
-      ],
-    );
-  }
-
-  Widget logo(){
-    return new Hero(
-      tag: 'hero',
-      child: Padding(
-        padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-        child: CircleAvatar(
-          backgroundColor: Colors.transparent,
-          radius: 150.0,
-          child: Image.asset('images/Logo.png'),
-        ),
-      ),
-      /*child: CircleAvatar(
-        backgroundColor: Colors.transparent,
-        radius: 200.0,
-        child: Image.asset('images/Logo.png'),
-      ),*/
-    );
-  }
-  
-  Widget emailField(){
-    return new Row(
-      children: <Widget>[
-        new Expanded(
-          child: new Padding(
-            padding: const EdgeInsets.only(left: 40.0),
-            child: new Text(
-              "EMAIL",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.redAccent,
-                fontSize: 15.0,
-              ),
-            ),
-          ),
-        ),
-      ],
+    return new Scaffold(
+      body: Container(
+          child: Column(
+            children: <Widget>[
+              Form(
+                key: _formKey,
+                child: Column(
+                  children: <Widget>[
+                    TextFormField(
+                      decoration: const InputDecoration(
+                          labelText: 'Email'
+                      ),
+                      onChanged: (newValue) {
+                        email = newValue;
+                      },
+                      initialValue: email,
+                      validator: (String value) {
+                        if (email  == '') {
+                          return 'Email cannot be blank';
+                        }
+                        return globals.allUsers.containsKey(email) ? null : 'That email does not have an associated account';
+                      },
+                    )
+                  ],
+                ),
+              )
+            ],
+        )
+      )
     );
   }
 }

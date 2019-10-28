@@ -234,7 +234,7 @@ class SignupState extends State<ApplicantSignup>{
       body: SingleChildScrollView(
         padding: EdgeInsets.all(30),
         child: Form(
-          key: _formKey,
+          key: _formKey2,
           child: Column(
             children: <Widget>[
               Text(
@@ -291,7 +291,7 @@ class SignupState extends State<ApplicantSignup>{
                               ),
                               color: Color(0xFF6CB2E5),
                               onPressed: () {
-                                if (_formKey.currentState.validate()) {
+                                if (_formKey2.currentState.validate()) {
                                   globals.currentUser.addType(typeOfEmployment);
                                   Navigator.push(
                                       context,
@@ -317,7 +317,7 @@ class SignupState extends State<ApplicantSignup>{
         body: SingleChildScrollView(
           padding: EdgeInsets.all(30.0),
           child: Form(
-            key: _formKey,
+            key: _formKey3,
             child: Column(
               children: <Widget>[
                 Text(
@@ -420,7 +420,7 @@ class SignupState extends State<ApplicantSignup>{
                                 ),
                                 color: Color(0xFF6CB2E5),
                                 onPressed: () {
-                                  if (_formKey.currentState.validate()) {
+                                  if (_formKey3.currentState.validate()) {
                                     globals.currentUser.addInfo(
                                         title,
                                         summary,
