@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:icebreaker/pages/messaging_texts.dart';
 import 'package:icebreaker/pages/startup_page.dart';
 
 void main() => runApp(MyApp());
