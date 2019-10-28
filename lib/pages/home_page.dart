@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:icebreaker/pages/messaging.dart';
 import 'package:icebreaker/profile_card.dart';
 import 'package:icebreaker/CardDetail.dart';
 
@@ -48,6 +49,15 @@ class HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("IceBreaker"),
         backgroundColor: Color(0xFF6CB2E5),
+        actions: <Widget>[
+      IconButton(
+      icon: Icon(Icons.message),
+      onPressed: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => messaging()));
+      },
+
+      )],
       ),
       body: Stack(alignment: Alignment.center, children: cardList),
     );
@@ -179,4 +189,7 @@ class HomePageState extends State<HomePage> {
     }
     return cardList;
   }
-}
+
+  }
+
+
