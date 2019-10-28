@@ -322,6 +322,9 @@ class SignupState extends State<RecruiterSignUp>{
                                       salary,
                                       timeFrame
                                   );
+                                  globals.allUsers[email] = globals.currentUser;
+                                  print(globals.currentUser.email);
+                                  print(globals.currentUser.password);
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(builder: (context) => HomePage())

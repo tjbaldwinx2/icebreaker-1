@@ -428,6 +428,7 @@ class SignupState extends State<ApplicantSignup>{
                                         experience,
                                         skills
                                     );
+                                    globals.allUsers[email] = globals.currentUser;
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(builder: (context) => HomePage())
