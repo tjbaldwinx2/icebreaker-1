@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:icebreaker/pages/login_page.dart';
 import 'package:icebreaker/pages/messaging_texts.dart';
 import 'package:multi_page_form/multi_page_form.dart';
@@ -46,6 +47,7 @@ class MessagingConvos extends StatelessWidget{
     list.add(userCard(Text("Sidney Davis"), context));
     globals.allUsers.forEach((k, v) => list.add(userCard(Text("${v.firstName} ${v.lastName}"), context)));
     return new Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: list,
     );
   }
