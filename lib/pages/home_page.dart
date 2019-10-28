@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icebreaker/pages/messaging.dart';
-import 'package:icebreaker/pages/messaging_convos.dart';
+import 'package:icebreaker/pages/startup_page.dart';
 import 'package:icebreaker/profile_card.dart';
 import 'package:icebreaker/CardDetail.dart';
 
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         routes: <String, WidgetBuilder>{
           '/cardDetails': (BuildContext context) {
-            // return new CardDetails();
+            // return new CardDetails();d
           }
         },
         home: HomePage());
@@ -51,12 +51,19 @@ class HomePageState extends State<HomePage> {
         title: Text("IceBreaker"),
         backgroundColor: Color(0xFF6CB2E5),
         actions: <Widget>[
-      IconButton(
-      icon: Icon(Icons.message),
-      onPressed: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => MessagingConvos()));
-      },
+          IconButton(
+            icon: Icon(Icons.exit_to_app),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => StartupPage()));
+            },
+          ),
+          IconButton(
+          icon: Icon(Icons.message),
+          onPressed: () {
+            Navigator.push(context,
+              MaterialPageRoute(builder: (context) => messaging()));
+            },
 
       )],
       ),
