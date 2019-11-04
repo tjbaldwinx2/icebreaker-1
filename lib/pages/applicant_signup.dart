@@ -27,9 +27,19 @@ class SignupState extends State<ApplicantSignup>{
   String skills = '';
   String password = '';
   String reenteredPassword;
-  static GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
-  static GlobalKey<FormState> _formKey2 = new GlobalKey<FormState>();
-  static GlobalKey<FormState> _formKey3 = new GlobalKey<FormState>();
+
+  static final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
+  static final GlobalKey<FormState> _formKey2 = new GlobalKey<FormState>();
+  static final GlobalKey<FormState> _formKey3 = new GlobalKey<FormState>();
+
+  List<String> raceList = ['Select Race', 'White', 'Black or African American', 'Pacific Islander', 'Native American', 'Asian', 'More than One', 'Refuse to Answer'];
+  List<String> ethnicityList = ['Select Ethnicity', 'Not Hispanic or Latino', 'Hispanic or Latino', 'Refuse to Answer'];
+  List<String> disabilityList = ['Select Disability', 'I have a disability', 'I do not have a disability', 'Refuse to Answer'];
+  List<String> employmentList = ['Select Employment Type', 'Co-Op/Intern', 'Full-Time', 'Part-Time'];
+  String ethValue;
+  String raceValue;
+  String disabilityValue;
+  String employmentValue;
 
   @override
   Widget build(BuildContext context) {
@@ -41,184 +51,225 @@ class SignupState extends State<ApplicantSignup>{
   }
 
   Widget page1() {
-    return new Scaffold(
+    return Scaffold(
         body: SingleChildScrollView(
-          padding: EdgeInsets.all(30.0),
           child: Form(
             key: _formKey,
               child: Column(
               children: <Widget>[
-                Text(
+                Container(
+                  padding: EdgeInsets.fromLTRB(30, 30, 30, 10),
+                  child: Text(
                   'Personal Information',
                   style: TextStyle(fontSize: 24),
                   textAlign: TextAlign.center,
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                      labelText: 'First Name'
-                  ),
-                  onChanged: (newValue) {
-                    firstName = newValue;
-                  },
-                  initialValue: firstName,
-                  validator: (String value) {
-                    if (value == null) {
-                      return 'First name cannot be blank';
-                    }
-                    return (firstName == '') ? 'First name cannot be blank' : null;
-                  },
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                      labelText: 'Last Name'
-                  ),
-                  onChanged: (newValue) {
-                    lastName = newValue;
-                  },
-                  initialValue: lastName,
-                  validator: (String value) {
-                    return (lastName == '') ? 'Last name cannot be blank' : null;
-                  },
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                      labelText: 'Email'
-                  ),
-                  keyboardType: TextInputType.emailAddress,
-                  onChanged: (newValue) {
-                    email = newValue;
-                  },
-                  initialValue: email,
-                  validator: (String value) {
-                    if (email == '') {
-                      return 'Email cannot be blank';
-                    }
-                    else if (!email.contains('@') || !email.contains('.')) {
-                      return 'Invalid email';
-                    }
-                    else {
-                      return null;
-                    }
-                  },
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                      labelText: 'Password'
-                  ),
-                  onChanged: (newValue) {
-                    password = newValue;
-                  },
-                  obscureText: true,
-                  validator: (String value) {
-                    return password == '' ? 'Password cannot be blank' : null;
-                  },
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                      labelText: 'Re-Enter Password'
-                  ),
-                  onChanged: (newValue) {
-                    reenteredPassword = newValue;
-                  },
-                  obscureText: true,
-                  validator: (String value) {
-                    return password != reenteredPassword ? 'Passwords must match' : null;
-                  },
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                      labelText: 'Address'
-                  ),
-                  onChanged: (newValue) {
-                    address = newValue;
-                  },
-                  initialValue: address,
-                  validator: (String value) {
-                    return address == '' ? 'Address cannot be blank' : null;
-                  },
-                ),
-                DropdownButtonFormField(
-                  items: globals.races.map((String race) {
-                    return new DropdownMenuItem(
-                        value: race,
-                        child: Text(race)
-                    );
-                  }).toList(),
-                  decoration: const InputDecoration(
-                      labelText: 'Race'
-                  ),
-                  onChanged: (newValue) {
-                    race = newValue;
-                  },
-                  validator: (value) {
-                    return race == '' ? 'Race cannot be blank' : null;
-                  },
-                ),
-                DropdownButtonFormField(
-                  items: globals.ethnicities.map((String ethnicity) {
-                    return new DropdownMenuItem(
-                        value: ethnicity,
-                        child: Text(ethnicity)
-                    );
-                  }).toList(),
-                  decoration: const InputDecoration(
-                      labelText: 'Ethnicity'
-                  ),
-                  onChanged: (newValue) {
-                    ethnicity = newValue;
-                  },
-                  validator: (value) {
-                    return ethnicity == '' ? 'Ethnicity cannot be blank' : null;
-                  },
-                ),
-                DropdownButtonFormField(
-                  items: globals.disabilities.map((String disability) => DropdownMenuItem(
-                      value: disability,
-                      child: Text(disability)
                   )
-                  ).toList(),
-                  onChanged: (newValue) {
-                    disability = newValue;
-                  },
-                  decoration: const InputDecoration(
-                      labelText: 'Disability Disclosure'
+                ),
+
+                Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.fromLTRB(30, 5, 30, 0),
+                  child: Text(
+                    '*Asterisk indicates required field',
+                    style: TextStyle(fontSize: 12),
+                    textAlign: TextAlign.center,
                   ),
-                  validator: (value) {
-                    return disability == '' ? 'Disability disclosure cannot be blank' : null;
-                  },
                 ),
                 Container(
-                  padding: EdgeInsets.all(20.0),
-                  alignment: Alignment.center,
-                  child: ButtonTheme(
-                      minWidth: 200.0,
-                      height: 40.0,
-                      child: RaisedButton(
-                          child: new Text(
-                            'Next',
-                            style: TextStyle(fontSize: 24, color: Color(0xFF1D4489)),
-                          ),
-                          color: Color(0xFF6CB2E5),
-                          onPressed: () {
-                            if (_formKey.currentState.validate()) {
-                              globals.currentUser = new profile.ApplicantProfile(
-                                  firstName,
-                                  lastName,
-                                  email,
-                                  password,
-                                  address,
-                                  race,
-                                  ethnicity,
-                                  disability
-                              );
-                              print(globals.currentUser);
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => page2())
-                              );
-                            }
+                  padding: EdgeInsets.fromLTRB(30, 0, 30, 30),
+                  child: Column(
+                    children: <Widget>[
+                      TextFormField(
+                        decoration: const InputDecoration(
+                            labelText: 'First Name*'
+                        ),
+                        onChanged: (newValue) {
+                          firstName = newValue;
+                        },
+                        initialValue: firstName,
+                        validator: (String value) {
+                          if (value == null) {
+                            return 'First name cannot be blank';
                           }
+                          return (firstName == '') ? 'First name cannot be blank' : null;
+                        },
+                      ),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                            labelText: 'Last Name*'
+                        ),
+                        onChanged: (newValue) {
+                          lastName = newValue;
+                        },
+                        initialValue: lastName,
+                        validator: (String value) {
+                          return (lastName == '') ? 'Last name cannot be blank' : null;
+                        },
+                      ),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                            labelText: 'Email*'
+                        ),
+                        keyboardType: TextInputType.emailAddress,
+                        onChanged: (newValue) {
+                          email = newValue;
+                        },
+                        initialValue: email,
+                        validator: (String value) {
+                          if (email == '') {
+                            return 'Email cannot be blank';
+                          }
+                          else if (!email.contains('@') || !email.contains('.')) {
+                            return 'Invalid email';
+                          }
+                          else {
+                            return null;
+                          }
+                        },
+                      ),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                            labelText: 'Password*'
+                        ),
+                        onChanged: (newValue) {
+                          password = newValue;
+                        },
+                        obscureText: true,
+                        validator: (String value) {
+                          return password == '' ? 'Password cannot be blank' : null;
+                        },
+                      ),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                            labelText: 'Re-Enter Password*'
+                        ),
+                        onChanged: (newValue) {
+                          reenteredPassword = newValue;
+                        },
+                        obscureText: true,
+                        validator: (String value) {
+                          return password != reenteredPassword ? 'Passwords must match' : null;
+                        },
+                      ),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          labelText: 'Address*',
+                          helperText: 'Format as Street Address, City, State Zip Code'
+                        ),
+                        onChanged: (newValue) {
+                          address = newValue;
+                        },
+                        initialValue: address,
+                        validator: (String value) {
+                          return address == '' ? 'Address cannot be blank' : null;
+                        },
+                      ),
+                      DropdownButtonFormField(
+                        items: raceList.map((String race) {
+                          return new DropdownMenuItem(
+                              value: race,
+                              child: Text(race)
+                          );
+                        }).toList(),
+                        decoration: const InputDecoration(
+                            labelText: 'Race*'
+                        ),
+                        onChanged: (newValue) {
+                          race = newValue;
+                          setState(() {
+                            raceValue = newValue;
+                          });
+                        },
+                        value: raceValue == null ? raceList[0] : raceValue,
+                        validator: (value) {
+                          if (race == 'Select Race') {
+                            return 'Must select race';
+                          }
+                          return race == '' ? 'Race cannot be blank' : null;
+                        },
+                      ),
+                      DropdownButtonFormField(
+                        items: ethnicityList.map((String ethnicity) {
+                          return DropdownMenuItem<String>(
+                              value: ethnicity,
+                              child: Text(ethnicity)
+                          );
+                        }).toList(),
+                        decoration: const InputDecoration(
+                            labelText: 'Ethnicity*'
+                        ),
+                        onChanged: (newValue) {
+                          ethnicity = newValue;
+                          setState(() {
+                            ethValue = newValue;
+                          });
+                        },
+                        value: ethValue == null ? ethnicityList[0] : ethValue,
+                        validator: (value) {
+                          if (ethnicity == 'Select Ethnicity') {
+                            return 'Must select ethnicity';
+                          }
+                          return ethnicity == '' ? 'Ethnicity cannot be blank' : null;
+                        },
+                      ),
+                      DropdownButtonFormField(
+                        items: disabilityList.map((String disability) => DropdownMenuItem(
+                            value: disability,
+                            child: Text(disability)
+                        )
+                        ).toList(),
+                        onChanged: (newValue) {
+                          disability = newValue;
+                          setState(() {
+                            disabilityValue = newValue;
+                          });
+                        },
+                        value: disabilityValue == null ? disabilityList[0] : disabilityValue,
+                        decoration: const InputDecoration(
+                            labelText: 'Disability Disclosure*'
+                        ),
+                        validator: (value) {
+                          if (disability == 'Select Disability') {
+                            return 'Must select disability';
+                          }
+                          return disability == '' ? 'Disability disclosure cannot be blank' : null;
+                        },
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(20.0),
+                        alignment: Alignment.center,
+                        child: ButtonTheme(
+                            minWidth: 200.0,
+                            height: 40.0,
+                            child: RaisedButton(
+                                child: new Text(
+                                  'Next',
+                                  style: TextStyle(fontSize: 24, color: Color(0xFF1D4489)),
+                                ),
+                                color: Color(0xFF6CB2E5),
+                                onPressed: () {
+                                  if (_formKey.currentState.validate()) {
+                                    globals.currentUser = new profile.ApplicantProfile(
+                                        firstName,
+                                        lastName,
+                                        email,
+                                        password,
+                                        address,
+                                        race,
+                                        ethnicity,
+                                        disability
+                                    );
+                                    print(globals.currentUser);
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => page2())
+                                    );
+                                  }
+                                }
+                            )
+                        ),
                       )
+                    ],
                   ),
                 ),
               ],
@@ -230,7 +281,7 @@ class SignupState extends State<ApplicantSignup>{
   }
 
   Widget page2() {
-    return new Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         padding: EdgeInsets.all(30),
         child: Form(
@@ -243,19 +294,26 @@ class SignupState extends State<ApplicantSignup>{
                 textAlign: TextAlign.center,
               ),
               DropdownButtonFormField(
-                items: globals.employments.map((String employment) {
-                  return new DropdownMenuItem(
+                items: employmentList.map((String employment) {
+                  return DropdownMenuItem(
                       value: employment,
                       child: Text(employment)
                   );
                 }).toList(),
                 decoration: const InputDecoration(
-                    labelText: 'Type of Employment'
+                    labelText: 'Type of Employment*'
                 ),
                 onChanged: (newValue) {
                   typeOfEmployment = newValue;
+                  setState(() {
+                    employmentValue = newValue;
+                  });
                 },
+                value: employmentValue == null ? employmentList[0] : employmentValue,
                 validator: (value) {
+                  if (typeOfEmployment == 'Select Employment Type') {
+                    return 'Type of Employment cannot be blank';
+                  }
                   return typeOfEmployment == '' ? 'Type of Employment cannot be blank' : null;
                 },
               ),
@@ -274,10 +332,7 @@ class SignupState extends State<ApplicantSignup>{
                                   style: TextStyle(fontSize: 24, color: Color(0xFF6CB2E5))
                               ),
                               onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => page1())
-                                );
+                                Navigator.pop(context);
                               }
                           )
                       ),
@@ -313,7 +368,7 @@ class SignupState extends State<ApplicantSignup>{
   }
 
   Widget page3() {
-    return new Scaffold(
+    return Scaffold(
         body: SingleChildScrollView(
           padding: EdgeInsets.all(30.0),
           child: Form(
@@ -403,10 +458,7 @@ class SignupState extends State<ApplicantSignup>{
                                     style: TextStyle(fontSize: 24, color: Color(0xFF6CB2E5))
                                 ),
                                 onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(builder: (context) => page2())
-                                  );
+                                  Navigator.pop(context);
                                 }
                             )
                         ),
@@ -443,7 +495,6 @@ class SignupState extends State<ApplicantSignup>{
               ],
             ),
           )
-
         )
     );
   }
