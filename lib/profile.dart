@@ -9,6 +9,7 @@ abstract class Profile {
   createPosition(String title, String description, String education, String skillsRequired, String skillsDesired, String salary, String timeFrame);
   addType(String type);
   addInfo(String title, String summary, String education, String experience, String skills);
+  getTypeOfEmployment();
 }
 
 class RecruiterProfile extends Profile {
@@ -30,6 +31,10 @@ class RecruiterProfile extends Profile {
 
   addType(String type) {
 
+  }
+
+  getTypeOfEmployment() {
+    return null;
   }
 }
 
@@ -61,6 +66,10 @@ class ApplicantProfile extends Profile {
 
   @override
   createPosition(String title, String description, String education, String skillsRequired, String skillsDesired, String salary, String timeFrame) {
+  }
+
+  getTypeOfEmployment() {
+    return typeOfEmployment;
   }
 }
 
