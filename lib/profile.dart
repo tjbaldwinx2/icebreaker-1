@@ -10,6 +10,11 @@ abstract class Profile {
   addType(String type);
   addInfo(String title, String summary, String education, String experience, String skills);
   getTypeOfEmployment();
+  getTitle();
+  getSummary();
+  getEducation();
+  getExperience();
+  getSkills();
 }
 
 class RecruiterProfile extends Profile {
@@ -34,6 +39,26 @@ class RecruiterProfile extends Profile {
   }
 
   getTypeOfEmployment() {
+    return null;
+  }
+
+  getTitle() {
+    return null;
+  }
+
+  getSummary() {
+    return null;
+  }
+
+  getEducation() {
+    return null;
+  }
+
+  getExperience() {
+    return null;
+  }
+
+  getSkills() {
     return null;
   }
 }
@@ -70,6 +95,26 @@ class ApplicantProfile extends Profile {
 
   getTypeOfEmployment() {
     return typeOfEmployment;
+  }
+
+  getTitle() {
+    return title;
+  }
+
+  getSummary() {
+    return summary;
+  }
+
+  getEducation() {
+    return education;
+  }
+
+  getExperience() {
+    return experience;
+  }
+
+  getSkills() {
+    return skills;
   }
 }
 

@@ -290,7 +290,6 @@ class SecondPage extends State<PageTwo> {
 
   @override
   Widget build(BuildContext context) {
-    print(typeOfEmployment);
     return Scaffold(
         body: SingleChildScrollView(
             padding: EdgeInsets.all(30),
@@ -382,13 +381,19 @@ class SecondPage extends State<PageTwo> {
 }
 
 class ThirdPage extends State<PageThree>{
-  String title = '';
-  String summary = '';
-  String education = '';
-  String experience = '';
-  String skills = '';
+  String title = globals.currentUser.getTitle() == null ? '' : globals.currentUser.getTitle();
+  String summary = globals.currentUser.getSummary() == null ? '' : globals.currentUser.getSummary();
+  String education = globals.currentUser.getEducation();
+  String experience = globals.currentUser.getExperience() == null ? '' : globals.currentUser.getExperience();
+  String skills = globals.currentUser.getSkills() == null ? '' : globals.currentUser.getSkills();
+  String educationValue;
 
   static final GlobalKey<FormState> _formKey3 = new GlobalKey<FormState>();
+
+  List<String> educationLevels = ['Select Highest Education Level', 'Some High School',
+    'High School Graduate or equivalent', 'Some College or University',
+    'Associate Degree', 'Bachelor\'s Degree', 'Master\'s Degree',
+    'Professional Degree', 'Doctorate Degree', 'Other', 'Refuse to Answer'];
 
   @override
   Widget build(BuildContext context) {
@@ -406,7 +411,7 @@ class ThirdPage extends State<PageThree>{
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
-                      labelText: 'Current Title',
+                      labelText: 'Current Title*',
                   ),
                   onChanged: (newValue) {
                     title = newValue;
@@ -418,7 +423,7 @@ class ThirdPage extends State<PageThree>{
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
-                      labelText: 'Summary'
+                      labelText: 'Summary*'
                   ),
                   onChanged: (newValue) {
                     summary = newValue;
@@ -432,7 +437,7 @@ class ThirdPage extends State<PageThree>{
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
-                      labelText: 'Skills'
+                      labelText: 'Skills*'
                   ),
                   onChanged: (newValue) {
                     skills = newValue;
@@ -444,16 +449,28 @@ class ThirdPage extends State<PageThree>{
                     return skills == '' ? 'Skills cannot be blank' : null;
                   },
                 ),
-                TextFormField(
+                DropdownButtonFormField(
+                  items: educationLevels.map((String educationLevel) {
+                    return DropdownMenuItem(
+                        value: educationLevel,
+                        child: Text(educationLevel)
+                    );
+                  }).toList(),
                   decoration: const InputDecoration(
-                      labelText: 'Education Level'
+                      labelText: 'Education Level*'
                   ),
                   onChanged: (newValue) {
                     education = newValue;
+                    setState(() {
+                      educationValue = newValue;
+                    });
                   },
-                  initialValue: education,
-                  validator: (String value) {
-                    return education == '' ? 'Education level cannot be blank' : null;
+                  value: educationValue == null ? education == null ? educationLevels[0] : education : educationValue,
+                  validator: (value) {
+                    if (education == 'Select Highest Education Level') {
+                      return 'Highest Education Level cannot be blank';
+                    }
+                    return education == '' ? 'Highest Education Level cannot be blank' : null;
                   },
                 ),
                 TextFormField(
@@ -482,6 +499,7 @@ class ThirdPage extends State<PageThree>{
                                     style: TextStyle(fontSize: 24, color: Color(0xFF6CB2E5))
                                 ),
                                 onPressed: () {
+                                  globals.currentUser.addInfo(title, summary, education, experience, skills);
                                   Navigator.pop(context);
                                 }
                             )
