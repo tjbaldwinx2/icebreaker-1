@@ -303,6 +303,15 @@ class SecondPage extends State<PageTwo> {
                     style: TextStyle(fontSize: 24),
                     textAlign: TextAlign.center,
                   ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    padding: EdgeInsets.fromLTRB(30, 5, 30, 0),
+                    child: Text(
+                      '*Asterisk indicates required field',
+                      style: TextStyle(fontSize: 12),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
                   DropdownButtonFormField(
                     items: employmentList.map((String employment) {
                       return DropdownMenuItem(
@@ -408,6 +417,15 @@ class ThirdPage extends State<PageThree>{
                   'Employment Information',
                   style: TextStyle(fontSize: 24),
                   textAlign: TextAlign.center,
+                ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.fromLTRB(30, 5, 30, 0),
+                  child: Text(
+                    '*Asterisk indicates required field',
+                    style: TextStyle(fontSize: 12),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
