@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:icebreaker/pages/home_page.dart';
-import 'package:icebreaker/pages/login_page.dart';
+import 'package:icebreaker/pages/home_page_recruiter.dart';
 import 'package:icebreaker/globals.dart' as globals;
 import 'package:icebreaker/profile.dart' as profile;
 
@@ -327,7 +326,7 @@ class SignupState extends State<RecruiterSignUp>{
                                   print(globals.currentUser.password);
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(builder: (context) => HomePage())
+                                      MaterialPageRoute(builder: (context) => HomePageRecruiter())
                                   );
                                 }
                               }
