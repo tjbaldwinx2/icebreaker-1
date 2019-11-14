@@ -1,8 +1,10 @@
 # icebreaker
 
-An application that allows recruiters and job searchers to connect.
+IceBreaker is a Android application that allows recruiters/hiring manaagers to post open positions and allow job seekers to easily apply to said postions. This version of the application depicts a prototype of the application and a glimpse at the features that would show in later releases.
 
 ## Getting Started
+
+When installing the application, ADD STUFF HERE!
 
 This project is a starting point for a Flutter application.
 
