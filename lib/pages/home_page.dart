@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:icebreaker/pages/messaging.dart';
 import 'package:icebreaker/pages/messaging_convos.dart';
 import 'package:icebreaker/pages/startup_page.dart';
 import 'package:icebreaker/profile_card.dart';
@@ -50,30 +49,31 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("IceBreaker"),
-        automaticallyImplyLeading: false,
+        title: Text("IceBreaker for Applicants"),
+        centerTitle: true,
+        automaticallyImplyLeading: true,
+        leading: IconButton(icon:Icon(Icons.exit_to_app),
+          onPressed: () {
+            globals.currentUser = null;
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => StartupPage()));
+          },
+        ),
         backgroundColor: Color(0xFF6CB2E5),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.exit_to_app),
+            icon: Icon(Icons.message),
             onPressed: () {
-              globals.currentUser = null;
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => StartupPage()));
-            },
-          ),
-          IconButton(
-          icon: Icon(Icons.message),
-          onPressed: () {
-            Navigator.push(context,
-              MaterialPageRoute(builder: (context) => MessagingConvos()));
+                  MaterialPageRoute(builder: (context) => MessagingConvos()));
             },
 
-      )],
+          )],
       ),
       body: Stack(alignment: Alignment.center, children: cardList),
     );
   }
+
 
   List<Widget> _generateCards() {
     List<profile_card> planetCard = new List();

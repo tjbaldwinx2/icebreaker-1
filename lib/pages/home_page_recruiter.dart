@@ -49,18 +49,19 @@ class HomePageState extends State<HomePageRecruiter> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
         title: Text("IceBreaker for Recruiters"),
-        automaticallyImplyLeading: false,
-        backgroundColor: Color(0xFF6CB2E5),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.exit_to_app),
+        centerTitle: true,
+        automaticallyImplyLeading: true,
+          leading: IconButton(icon:Icon(Icons.exit_to_app),
             onPressed: () {
               globals.currentUser = null;
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => StartupPage()));
             },
           ),
+        backgroundColor: Color(0xFF6CB2E5),
+        actions: <Widget>[
           IconButton(
             icon: Icon(Icons.message),
             onPressed: () {
