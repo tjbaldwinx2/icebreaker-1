@@ -15,6 +15,7 @@ abstract class Profile {
   getEducation();
   getExperience();
   getSkills();
+  Position getPosition();
 }
 
 class RecruiterProfile extends Profile {
@@ -60,6 +61,10 @@ class RecruiterProfile extends Profile {
 
   getSkills() {
     return null;
+  }
+
+  Position getPosition() {
+    return position;
   }
 }
 
@@ -116,16 +121,20 @@ class ApplicantProfile extends Profile {
   getSkills() {
     return skills;
   }
+
+  getPosition() {
+    return null;
+  }
 }
 
 class Position {
-  String title;
-  String description;
+  String title = '';
+  String description = '';
   String education;
-  String skillsRequired;
-  String skillsDesired;
-  String salary;
-  String timeFrame;
+  String skillsRequired = '';
+  String skillsDesired = '';
+  String salary = '';
+  String timeFrame = '';
 
   Position(this.title, this.description, this.education, this.skillsRequired);
 
@@ -151,6 +160,34 @@ class Position {
 
   addTimeFrame(String timeFrame) {
     this.timeFrame = timeFrame;
+  }
+
+  getTitle() {
+    return title;
+  }
+
+  getDescription() {
+    return description;
+  }
+
+  getEducation() {
+     return education;
+  }
+
+  getSkillsRequired() {
+    return skillsRequired;
+  }
+
+  getSkillsDesired() {
+    return skillsDesired;
+  }
+
+  getSalary() {
+    return salary;
+  }
+
+  getTimeFrame() {
+    return timeFrame;
   }
 
 }
