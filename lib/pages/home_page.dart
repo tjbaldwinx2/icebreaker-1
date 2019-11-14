@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 import 'package:icebreaker/pages/messaging_convos.dart';
 import 'package:icebreaker/pages/startup_page.dart';
 import 'package:icebreaker/profile_card.dart';
@@ -12,14 +13,16 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        routes: <String, WidgetBuilder>{
-          '/cardDetails': (BuildContext context) {
-            // return new CardDetails();d
-          }
-        },
-        home: HomePage());
+    return Scaffold(
+      body: Container(
+        child: HomePage(),
+      )
+    );
+//        routes: <String, WidgetBuilder>{
+//          '/cardDetails': (BuildContext context) {
+//            // return new CardDetails();d
+//          }
+//        },
   }
 }
 
@@ -43,6 +46,9 @@ class HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     cardList = _generateCards();
+    if (globals.newUser) {
+      Future.delayed(Duration.zero, () => generateDialogue(context));
+    }
   }
 
   @override
@@ -79,7 +85,7 @@ class HomePageState extends State<HomePage> {
     List<profile_card> planetCard = new List();
     planetCard.add(
       profile_card(
-          "Golden Reterver ",
+          "Golden Retriever ",
           "http://cdn.akc.org/content/hero/golden_retriever_august_hero.jpg",
           70.0,
           true),
@@ -195,13 +201,41 @@ class HomePageState extends State<HomePage> {
                         )
                       ],
                     )),
-              )),
-        ),
-      );
-    }
+              )
+            ),
+          ),
+        );
+      }
     return cardList;
   }
 
+  void generateDialogue(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: new Text("Welcome!"),
+            content: new Text("You have successfully signed up for IceBreaker."),
+            actions: <Widget>[
+              ButtonTheme(
+                  minWidth: 20.0,
+                  height: 35.0,
+                  child: RaisedButton(
+                      child: new Text(
+                        'Close',
+                        style: TextStyle(fontSize: 18, color: Color(0xFF1D4489)),
+                      ),
+                      color: Color(0xFF6CB2E5),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      }
+                  )
+              ),
+            ],
+          );
+        }
+    );
   }
+}
 
 

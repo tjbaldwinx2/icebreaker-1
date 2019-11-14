@@ -14,7 +14,7 @@ class PageOne extends StatefulWidget {
 class PageTwo extends StatefulWidget {
   @override
   SecondPage createState() {
-    return SecondPage();
+    return new SecondPage();
   }
 }
 
@@ -292,19 +292,22 @@ class SecondPage extends State<PageTwo> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-            padding: EdgeInsets.all(30),
             child: Form(
               autovalidate: true,
               key: _formKey2,
               child: Column(
                 children: <Widget>[
-                  Text(
-                    'What type of employment are you seeking?',
-                    style: TextStyle(fontSize: 24),
-                    textAlign: TextAlign.center,
+                  Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.fromLTRB(30, 30, 30, 10),
+                    child: Text(
+                      'What type of employment are you seeking?',
+                      style: TextStyle(fontSize: 24),
+                      textAlign: TextAlign.center,
+                    )
                   ),
                   Container(
-                    alignment: Alignment.centerLeft,
+                    alignment: Alignment.topLeft,
                     padding: EdgeInsets.fromLTRB(30, 5, 30, 0),
                     child: Text(
                       '*Asterisk indicates required field',
@@ -312,78 +315,84 @@ class SecondPage extends State<PageTwo> {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  DropdownButtonFormField(
-                    items: employmentList.map((String employment) {
-                      return DropdownMenuItem(
-                          value: employment,
-                          child: Text(employment)
-                      );
-                    }).toList(),
-                    decoration: const InputDecoration(
-                        labelText: 'Type of Employment*'
-                    ),
-                    onChanged: (newValue) {
-                      typeOfEmployment = newValue;
-                      setState(() {
-                        employmentValue = newValue;
-                      });
-                    },
-                    value: employmentValue == null ? typeOfEmployment == null ? employmentList[0] : typeOfEmployment : employmentValue,
-                    validator: (value) {
-                      if (typeOfEmployment == 'Select Employment Type') {
-                        return 'Type of Employment cannot be blank';
-                      }
-                      return typeOfEmployment == '' ? 'Type of Employment cannot be blank' : null;
-                    },
-                  ),
                   Container(
-                      padding: EdgeInsets.all(10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          ButtonTheme(
-                              minWidth: 100.0,
-                              height: 40.0,
-                              child: RaisedButton(
-                                  color: Color(0xFF1D4489),
-                                  child: new Text(
-                                      'Back',
-                                      style: TextStyle(fontSize: 24, color: Color(0xFF6CB2E5))
-                                  ),
-                                  onPressed: () {
-                                    globals.currentUser.addType(typeOfEmployment);
-                                    print(globals.currentUser.getTypeOfEmployment());
-                                    Navigator.pop(context);
-                                  }
-                              )
-                          ),
-                          ButtonTheme(
-                              minWidth: 100.0,
-                              height: 40.0,
-                              child: RaisedButton(
-                                  child: new Text(
-                                    'Next',
-                                    style: TextStyle(fontSize: 24, color: Color(0xFF1D4489)),
-                                  ),
-                                  color: Color(0xFF6CB2E5),
-                                  onPressed: () {
-                                    if (_formKey2.currentState.validate()) {
-                                      globals.currentUser.addType(typeOfEmployment);
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => PageThree())
-                                      );
-                                    }
-                                  }
-                              )
-                          ),
-                        ],
+                    padding: EdgeInsets.fromLTRB(30, 0, 30, 30),
+                    child: Column(
+                      children: <Widget>[
+                        DropdownButtonFormField(
+                        items: employmentList.map((String employment) {
+                          return DropdownMenuItem(
+                              value: employment,
+                              child: Text(employment)
+                          );
+                        }).toList(),
+                        decoration: const InputDecoration(
+                            labelText: 'Type of Employment*'
+                        ),
+                        onChanged: (newValue) {
+                          typeOfEmployment = newValue;
+                          setState(() {
+                            employmentValue = newValue;
+                          });
+                        },
+                        value: employmentValue == null ? typeOfEmployment == null ? employmentList[0] : typeOfEmployment : employmentValue,
+                        validator: (value) {
+                          if (typeOfEmployment == 'Select Employment Type') {
+                            return 'Type of Employment cannot be blank';
+                          }
+                          return typeOfEmployment == '' ? 'Type of Employment cannot be blank' : null;
+                        },
+                      ),
+                      Container(
+                          padding: EdgeInsets.all(10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              ButtonTheme(
+                                  minWidth: 100.0,
+                                  height: 40.0,
+                                  child: RaisedButton(
+                                      color: Color(0xFF1D4489),
+                                      child: new Text(
+                                          'Back',
+                                          style: TextStyle(fontSize: 24, color: Color(0xFF6CB2E5))
+                                      ),
+                                      onPressed: () {
+                                        globals.currentUser.addType(typeOfEmployment);
+                                        print(globals.currentUser.getTypeOfEmployment());
+                                        Navigator.pop(context);
+                                      }
+                                  )
+                              ),
+                              ButtonTheme(
+                                  minWidth: 100.0,
+                                  height: 40.0,
+                                  child: RaisedButton(
+                                      child: new Text(
+                                        'Next',
+                                        style: TextStyle(fontSize: 24, color: Color(0xFF1D4489)),
+                                      ),
+                                      color: Color(0xFF6CB2E5),
+                                      onPressed: () {
+                                        if (_formKey2.currentState.validate()) {
+                                          globals.currentUser.addType(typeOfEmployment);
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(builder: (context) => PageThree())
+                                          );
+                                        }
+                                      }
+                                  )
+                              ),
+                            ],
+                          )
                       )
+                    ]
                   )
-                ],
-              ),
-            )
-
+                )
+              ],
+            ),
+          )
         )
     );
   }
@@ -408,16 +417,21 @@ class ThirdPage extends State<PageThree>{
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-          padding: EdgeInsets.all(30.0),
           child: Form(
             key: _formKey3,
             child: Column(
               children: <Widget>[
-                Text(
-                  'Employment Information',
-                  style: TextStyle(fontSize: 24),
-                  textAlign: TextAlign.center,
+                Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.fromLTRB(30, 30, 30, 10),
+                  child:
+                    Text(
+                      'Employment Information',
+                      style: TextStyle(fontSize: 24),
+                      textAlign: TextAlign.center,
+                    ),
                 ),
+
                 Container(
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.fromLTRB(30, 5, 30, 0),
@@ -427,131 +441,139 @@ class ThirdPage extends State<PageThree>{
                     textAlign: TextAlign.center,
                   ),
                 ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                      labelText: 'Current Title*',
-                  ),
-                  onChanged: (newValue) {
-                    title = newValue;
-                  },
-                  initialValue: title,
-                  validator: (String value) {
-                    return title == '' ? 'Current title cannot be blank' : null;
-                  },
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                      labelText: 'Summary*'
-                  ),
-                  onChanged: (newValue) {
-                    summary = newValue;
-                  },
-                  keyboardType: TextInputType.multiline,
-                  maxLines: null,
-                  initialValue: summary,
-                  validator: (String value) {
-                    return summary == '' ? 'Summary cannot be blank' : null;
-                  },
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(
-                      labelText: 'Skills*'
-                  ),
-                  onChanged: (newValue) {
-                    skills = newValue;
-                  },
-                  keyboardType: TextInputType.multiline,
-                  maxLines: null,
-                  initialValue: skills,
-                  validator: (String value) {
-                    return skills == '' ? 'Skills cannot be blank' : null;
-                  },
-                ),
-                DropdownButtonFormField(
-                  items: educationLevels.map((String educationLevel) {
-                    return DropdownMenuItem(
-                        value: educationLevel,
-                        child: Text(educationLevel)
-                    );
-                  }).toList(),
-                  decoration: const InputDecoration(
-                      labelText: 'Education Level*'
-                  ),
-                  onChanged: (newValue) {
-                    education = newValue;
-                    setState(() {
-                      educationValue = newValue;
-                    });
-                  },
-                  value: educationValue == null ? education == null ? educationLevels[0] : education : educationValue,
-                  validator: (value) {
-                    if (education == 'Select Highest Education Level') {
-                      return 'Highest Education Level cannot be blank';
-                    }
-                    return education == '' ? 'Highest Education Level cannot be blank' : null;
-                  },
-                ),
-                TextFormField(
-                    decoration: const InputDecoration(
-                        labelText: 'Experience'
-                    ),
-                    onChanged: (newValue) {
-                      experience = newValue;
-                    },
-                    keyboardType: TextInputType.multiline,
-                    maxLines: null,
-                    initialValue: experience
-                ),
                 Container(
-                    padding: EdgeInsets.all(10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        ButtonTheme(
-                            minWidth: 100.0,
-                            height: 40.0,
-                            child: RaisedButton(
-                                color: Color(0xFF1D4489),
-                                child: new Text(
-                                    'Back',
-                                    style: TextStyle(fontSize: 24, color: Color(0xFF6CB2E5))
-                                ),
-                                onPressed: () {
-                                  globals.currentUser.addInfo(title, summary, education, experience, skills);
-                                  Navigator.pop(context);
-                                }
-                            )
+                  padding: EdgeInsets.fromLTRB(30, 0, 30, 30),
+                  child: Column(
+                    children: <Widget>[
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          labelText: 'Current Title*',
                         ),
-                        ButtonTheme(
-                            minWidth: 100.0,
-                            height: 40.0,
-                            child: RaisedButton(
-                                child: new Text(
-                                  'Submit',
-                                  style: TextStyle(fontSize: 24, color: Color(0xFF1D4489)),
-                                ),
-                                color: Color(0xFF6CB2E5),
-                                onPressed: () {
-                                  if (_formKey3.currentState.validate()) {
-                                    globals.currentUser.addInfo(
-                                        title,
-                                        summary,
-                                        education,
-                                        experience,
-                                        skills
-                                    );
-                                    globals.allUsers[globals.currentUser.email] = globals.currentUser;
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(builder: (context) => HomePage())
-                                    );
-                                  }
-                                }
-                            )
+                        onChanged: (newValue) {
+                          title = newValue;
+                        },
+                        initialValue: title,
+                        validator: (String value) {
+                          return title == '' ? 'Current title cannot be blank' : null;
+                        },
+                      ),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                            labelText: 'Summary*'
                         ),
-                      ],
-                    )
-                )
+                        onChanged: (newValue) {
+                          summary = newValue;
+                        },
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        initialValue: summary,
+                        validator: (String value) {
+                          return summary == '' ? 'Summary cannot be blank' : null;
+                        },
+                      ),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                            labelText: 'Skills*'
+                        ),
+                        onChanged: (newValue) {
+                          skills = newValue;
+                        },
+                        keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        initialValue: skills,
+                        validator: (String value) {
+                          return skills == '' ? 'Skills cannot be blank' : null;
+                        },
+                      ),
+                      DropdownButtonFormField(
+                        items: educationLevels.map((String educationLevel) {
+                          return DropdownMenuItem(
+                              value: educationLevel,
+                              child: Text(educationLevel)
+                          );
+                        }).toList(),
+                        decoration: const InputDecoration(
+                            labelText: 'Education Level*'
+                        ),
+                        onChanged: (newValue) {
+                          education = newValue;
+                          setState(() {
+                            educationValue = newValue;
+                          });
+                        },
+                        value: educationValue == null ? education == null ? educationLevels[0] : education : educationValue,
+                        validator: (value) {
+                          if (education == 'Select Highest Education Level') {
+                            return 'Highest Education Level cannot be blank';
+                          }
+                          return education == '' ? 'Highest Education Level cannot be blank' : null;
+                        },
+                      ),
+                      TextFormField(
+                          decoration: const InputDecoration(
+                              labelText: 'Experience'
+                          ),
+                          onChanged: (newValue) {
+                            experience = newValue;
+                          },
+                          keyboardType: TextInputType.multiline,
+                          maxLines: null,
+                          initialValue: experience
+                      ),
+                      Container(
+                          padding: EdgeInsets.all(10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              ButtonTheme(
+                                  minWidth: 100.0,
+                                  height: 40.0,
+                                  child: RaisedButton(
+                                      color: Color(0xFF1D4489),
+                                      child: new Text(
+                                          'Back',
+                                          style: TextStyle(fontSize: 24, color: Color(0xFF6CB2E5))
+                                      ),
+                                      onPressed: () {
+                                        globals.currentUser.addInfo(title, summary, education, experience, skills);
+                                        Navigator.pop(context);
+                                      }
+                                  )
+                              ),
+                              ButtonTheme(
+                                  minWidth: 100.0,
+                                  height: 40.0,
+                                  child: RaisedButton(
+                                      child: new Text(
+                                        'Submit',
+                                        style: TextStyle(fontSize: 24, color: Color(0xFF1D4489)),
+                                      ),
+                                      color: Color(0xFF6CB2E5),
+                                      onPressed: () {
+                                        if (_formKey3.currentState.validate()) {
+                                          globals.currentUser.addInfo(
+                                              title,
+                                              summary,
+                                              education,
+                                              experience,
+                                              skills
+                                          );
+                                          globals.allUsers[globals.currentUser.email] = globals.currentUser;
+                                          globals.newUser = true;
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(builder: (context) => HomePage())
+                                          );
+                                        }
+                                      }
+                                  )
+                              ),
+                            ],
+                          )
+                      )
+                    ],
+                  ),
+                ),
               ],
             ),
           )
