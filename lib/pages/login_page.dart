@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
 import 'package:icebreaker/globals.dart' as globals;
 import 'package:icebreaker/pages/home_page.dart';
+import 'package:icebreaker/pages/home_page_recruiter.dart';
+import 'package:icebreaker/profile.dart';
 
 class LoginPage extends StatefulWidget {
 
@@ -49,6 +51,9 @@ class _LoginPageState extends State<LoginPage>{
                 obscureText: true,
                 initialValue: password,
                 validator: (String value) {
+                  if (password == null || globals.allUsers[email] == null) {
+                    return 'Incorrect Password';
+                  }
                   return globals.allUsers[email].password == password ? null : 'Incorrect Password';
                 },
               ),
@@ -61,10 +66,21 @@ class _LoginPageState extends State<LoginPage>{
                     color: Color(0xFF6CB2E5),
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => HomePage())
-                        );
+                        globals.currentUser = globals.allUsers[email];
+                        if (globals.currentUser is RecruiterProfile) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) =>
+                                  HomePageRecruiter())
+                          );
+                        }
+                        else {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) =>
+                                  HomePage())
+                          );
+                        }
                       }
                     }
                 ),

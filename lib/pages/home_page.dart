@@ -6,26 +6,6 @@ import 'package:icebreaker/profile_card.dart';
 import 'package:icebreaker/CardDetail.dart';
 import 'package:icebreaker/globals.dart' as globals;
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: HomePage(),
-      )
-    );
-//        routes: <String, WidgetBuilder>{
-//          '/cardDetails': (BuildContext context) {
-//            // return new CardDetails();d
-//          }
-//        },
-  }
-}
-
 class HomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {

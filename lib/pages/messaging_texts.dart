@@ -152,10 +152,6 @@ class MessagingTexts extends State<Messaging> {
       delivered: true,
     );
   }
-
-  void onMessageSubmitted(String message) async {
-
-  }
 }
 
 class Bubble extends StatelessWidget {
@@ -166,20 +162,21 @@ class Bubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bg = isMe ? Colors.white : Color(0xFF6CB2E5);
-    final align = isMe ? CrossAxisAlignment.start : CrossAxisAlignment.end;
+    final bg = isMe ? Color(0xFF6CB2E5) : Colors.white ;
+    final align = isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start;
     final icon = delivered ? Icons.done_all : Icons.done;
     final radius = isMe
         ? BorderRadius.only(
+            topLeft: Radius.circular(5.0),
+            bottomLeft: Radius.circular(5.0),
+             bottomRight: Radius.circular(10.0),
+          )
+        : BorderRadius.only(
             topRight: Radius.circular(5.0),
             bottomLeft: Radius.circular(10.0),
             bottomRight: Radius.circular(5.0),
           )
-        : BorderRadius.only(
-            topLeft: Radius.circular(5.0),
-            bottomLeft: Radius.circular(5.0),
-            bottomRight: Radius.circular(10.0),
-          );
+        ;
     return Column(
       crossAxisAlignment: align,
       children: <Widget>[

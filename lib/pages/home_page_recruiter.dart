@@ -5,24 +5,6 @@ import 'package:icebreaker/profile_card.dart';
 import 'package:icebreaker/CardDetailsRecruiter.dart';
 import 'package:icebreaker/globals.dart' as globals;
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        routes: <String, WidgetBuilder>{
-          '/cardDetailsRecruiter': (BuildContext context) {
-            // return new CardDetails();d
-          }
-        },
-        home: HomePageRecruiter());
-  }
-}
-
 class HomePageRecruiter extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -43,13 +25,15 @@ class HomePageState extends State<HomePageRecruiter> {
   void initState() {
     super.initState();
     cardList = _generateCards();
+    if (globals.newUser) {
+      Future.delayed(Duration.zero, () => generateDialogue(context));
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
         title: Text("IceBreaker for Recruiters"),
         centerTitle: true,
         automaticallyImplyLeading: true,
@@ -200,6 +184,34 @@ class HomePageState extends State<HomePageRecruiter> {
       );
     }
     return cardList;
+  }
+
+  void generateDialogue(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: new Text("Welcome!"),
+            content: new Text("You have successfully signed up for IceBreaker."),
+            actions: <Widget>[
+              ButtonTheme(
+                  minWidth: 20.0,
+                  height: 35.0,
+                  child: RaisedButton(
+                      child: new Text(
+                        'Close',
+                        style: TextStyle(fontSize: 18, color: Color(0xFF1D4489)),
+                      ),
+                      color: Color(0xFF6CB2E5),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      }
+                  )
+              ),
+            ],
+          );
+        }
+    );
   }
 
 }

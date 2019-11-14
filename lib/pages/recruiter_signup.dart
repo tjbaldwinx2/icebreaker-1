@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:icebreaker/pages/home_page.dart';
 import 'package:icebreaker/globals.dart' as globals;
+import 'package:icebreaker/pages/home_page_recruiter.dart';
 import 'package:icebreaker/profile.dart' as profile;
 
 class PageOneRecruiter extends StatefulWidget {
@@ -406,7 +406,7 @@ class SecondPage extends State<PageTwoRecruiter> {
                                                 globals.newUser = true;
                                                 Navigator.push(
                                                     context,
-                                                    MaterialPageRoute(builder: (context) => HomePage())
+                                                    MaterialPageRoute(builder: (context) => HomePageRecruiter())
                                                 );
                                               }
                                             }
