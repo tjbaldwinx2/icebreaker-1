@@ -84,7 +84,7 @@ class HomePageState extends State<HomePage> {
     List<profile_card> planetCard = new List();
     planetCard.add(
       profile_card(
-          "Golden Reterver ",
+          "Golden Retriever ",
           "http://cdn.akc.org/content/hero/golden_retriever_august_hero.jpg",
           70.0,
           true),
