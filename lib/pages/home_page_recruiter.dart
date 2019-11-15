@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icebreaker/pages/messaging_convos.dart';
+import 'package:icebreaker/pages/settings.dart';
 import 'package:icebreaker/pages/startup_page.dart';
 import 'package:icebreaker/profile_card.dart';
 import 'package:icebreaker/CardDetailsRecruiter.dart';
@@ -46,6 +47,13 @@ class HomePageState extends State<HomePageRecruiter> {
           ),
         backgroundColor: Color(0xFF6CB2E5),
         actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.settings),
+              onPressed:() {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SettingsPage()));
+              }
+          ),
           IconButton(
             icon: Icon(Icons.message),
             onPressed: () {
