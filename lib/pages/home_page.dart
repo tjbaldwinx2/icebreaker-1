@@ -22,7 +22,7 @@ class HomePageState extends State<HomePage> {
       cardList.removeAt(index);
     });
   }
-
+//
   @override
   void initState() {
     super.initState();
