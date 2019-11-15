@@ -47,6 +47,25 @@ class HomePageState extends State<HomePage> {
         ),
         backgroundColor: Color(0xFF6CB2E5),
         actions: <Widget>[
+        title: Text("IceBreaker"),
+        automaticallyImplyLeading: false,
+        backgroundColor: Color(0xFF6CB2E5),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.exit_to_app),
+            onPressed: () {
+              globals.currentUser = null;
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => StartupPage()));
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed:() {
+              Navigator.push(context,
+                MaterialPageRoute(builder: (context) => SettingsPage()));
+            }
+          ),
           IconButton(
             icon: Icon(Icons.message),
             onPressed: () {
