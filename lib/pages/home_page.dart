@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icebreaker/pages/messaging.dart';
 import 'package:icebreaker/pages/messaging_convos.dart';
+import 'package:icebreaker/pages/settings.dart';
 import 'package:icebreaker/pages/startup_page.dart';
 import 'package:icebreaker/profile_card.dart';
 import 'package:icebreaker/CardDetail.dart';
@@ -61,6 +62,13 @@ class HomePageState extends State<HomePage> {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => StartupPage()));
             },
+          ),
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed:() {
+              Navigator.push(context,
+                MaterialPageRoute(builder: (context) => SettingsPage()));
+            }
           ),
           IconButton(
           icon: Icon(Icons.message),
