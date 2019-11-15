@@ -4,15 +4,11 @@ IceBreaker is a Android application that allows recruiters/hiring manaagers to p
 
 ## Getting Started
 
-When installing the application, ADD STUFF HERE!
+There are two ways to install the application:
+- If you have an Android device, you can install the APK directly on to your device.
+- If you have Android Studio set up on your device, you can go under the "profile or debug APK" from the Android Studio start up screen or choose that option under the "File" tab on the menu in a project.
 
-This project is a starting point for a Flutter application.
+## Known Issues
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Unable to create a profile of the same type after creating a profile
+- Data does not persist after closing a conversation in Messaging
