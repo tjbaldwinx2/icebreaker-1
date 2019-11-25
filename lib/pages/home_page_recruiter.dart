@@ -221,7 +221,6 @@ class HomePageState extends State<HomePageRecruiter> {
         }
     );
   }
-
 }
 
 
