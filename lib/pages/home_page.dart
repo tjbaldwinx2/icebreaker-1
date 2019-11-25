@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:icebreaker/pages/messaging_convos.dart';
 import 'package:icebreaker/pages/settings.dart';
-import 'package:icebreaker/pages/startup_page.dart';
 import 'package:icebreaker/profile_card.dart';
 import 'package:icebreaker/CardDetail.dart';
 import 'package:icebreaker/globals.dart' as globals;
@@ -39,22 +38,15 @@ class HomePageState extends State<HomePage> {
         title: Text("IceBreaker for Applicants"),
         centerTitle: true,
         automaticallyImplyLeading: true,
-        leading: IconButton(icon:Icon(Icons.exit_to_app),
-          onPressed: () {
-            globals.currentUser = null;
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => StartupPage()));
-          },
-        ),
-        backgroundColor: Color(0xFF6CB2E5),
-        actions: <Widget>[
-          IconButton(
+        leading: IconButton(
             icon: Icon(Icons.settings),
             onPressed:() {
               Navigator.push(context,
-                MaterialPageRoute(builder: (context) => SettingsPage()));
+                  MaterialPageRoute(builder: (context) => SettingsPage()));
             }
-          ),
+        ),
+        backgroundColor: Color(0xFF6CB2E5),
+        actions: <Widget>[
           IconButton(
             icon: Icon(Icons.message),
             onPressed: () {
