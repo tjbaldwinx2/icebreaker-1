@@ -30,7 +30,6 @@ class CardDetailsState extends State<CardDetails> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     var data = index.toString();
     print(index);
     return MaterialApp(

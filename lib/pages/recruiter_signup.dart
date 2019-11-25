@@ -30,170 +30,167 @@ class FirstPage extends State<PageOneRecruiter> {
 
   @override
   Widget build(BuildContext context) {
-    return new WillPopScope(
-        onWillPop: () async => false,
-        child: new Scaffold(
-            body: SingleChildScrollView(
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: <Widget>[
-                      Container(
-                        alignment: Alignment.center,
-                        padding: EdgeInsets.fromLTRB(30, 30, 30, 10),
-                        child: Text(
-                          'Personal Information',
-                          style: TextStyle(fontSize: 24),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        padding: EdgeInsets.fromLTRB(30, 5, 30, 0),
-                        child: Text(
-                          '*Asterisk indicates required field',
-                          style: TextStyle(fontSize: 12),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.fromLTRB(30, 0, 30, 30),
-                        child: Column(
-                          children: <Widget>[
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                  labelText: 'First Name*'
-                              ),
-                              onChanged: (newValue) {
-                                firstName = newValue;
-                              },
-                              initialValue: firstName,
-                              validator: (String value) {
-                                if (value == null) {
-                                  return 'First name cannot be blank';
-                                }
-                                return (firstName == '') ? 'First name cannot be blank' : null;
-                              },
-                            ),
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                  labelText: 'Last Name*'
-                              ),
-                              onChanged: (newValue) {
-                                lastName = newValue;
-                              },
-                              initialValue: lastName,
-                              validator: (String value) {
-                                return (lastName == '') ? 'Last name cannot be blank' : null;
-                              },
-                            ),
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                  labelText: 'Email*'
-                              ),
-                              keyboardType: TextInputType.emailAddress,
-                              onChanged: (newValue) {
-                                email = newValue;
-                              },
-                              initialValue: email,
-                              validator: (String value) {
-                                if (email == '') {
-                                  return 'Email cannot be blank';
-                                }
-                                else if (!email.contains('@') || !email.contains('.')) {
-                                  return 'Invalid email';
-                                }
-                                else {
-                                  return null;
-                                }
-                              },
-                            ),
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                  labelText: 'Password*'
-                              ),
-                              onChanged: (newValue) {
-                                password = newValue;
-                              },
-                              obscureText: true,
-                              validator: (String value) {
-                                return password == '' ? 'Password cannot be blank' : null;
-                              },
-                            ),
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                  labelText: 'Re-Enter Password*'
-                              ),
-                              onChanged: (newValue) {
-                                reenteredPassword = newValue;
-                              },
-                              obscureText: true,
-                              validator: (String value) {
-                                return password != reenteredPassword ? 'Passwords must match' : null;
-                              },
-                            ),
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                  labelText: 'Company Name*'
-                              ),
-                              onChanged: (newValue) {
-                                company = newValue;
-                              },
-                              initialValue: company,
-                              validator: (String value) {
-                                return company == '' ? 'Company name cannot be blank' : null;
-                              },
-                            ),
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                  labelText: 'Job Title*'
-                              ),
-                              onChanged: (newValue) {
-                                title = newValue;
-                              },
-                              initialValue: title,
-                              validator: (String value) {
-                                return title == '' ? 'Job title cannot be blank' : null;
-                              },
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(20.0),
-                              alignment: Alignment.center,
-                              child: ButtonTheme(
-                                  minWidth: 200.0,
-                                  height: 40.0,
-                                  child: RaisedButton(
-                                      child: new Text(
-                                        'Next',
-                                        style: TextStyle(fontSize: 24, color: Color(0xFF1D4489)),
-                                      ),
-                                      color: Color(0xFF6CB2E5),
-                                      onPressed: () {
-                                        if (_formKey.currentState.validate()) {
-                                          globals.currentUser = new profile.RecruiterProfile(
-                                              firstName,
-                                              lastName,
-                                              email,
-                                              password,
-                                              company,
-                                              title
-                                          );
-                                          print(globals.currentUser);
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(builder: (context) => PageTwoRecruiter())
-                                          );
-                                        }
-                                      }
-                                  )
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
+    return new Scaffold(
+        body: SingleChildScrollView(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.fromLTRB(30, 30, 30, 10),
+                    child: Text(
+                      'Personal Information',
+                      style: TextStyle(fontSize: 24),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                )
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    padding: EdgeInsets.fromLTRB(30, 5, 30, 0),
+                    child: Text(
+                      '*Asterisk indicates required field',
+                      style: TextStyle(fontSize: 12),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(30, 0, 30, 30),
+                    child: Column(
+                      children: <Widget>[
+                        TextFormField(
+                          decoration: const InputDecoration(
+                              labelText: 'First Name*'
+                          ),
+                          onChanged: (newValue) {
+                            firstName = newValue;
+                          },
+                          initialValue: firstName,
+                          validator: (String value) {
+                            if (value == null) {
+                              return 'First name cannot be blank';
+                            }
+                            return (firstName == '') ? 'First name cannot be blank' : null;
+                          },
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                              labelText: 'Last Name*'
+                          ),
+                          onChanged: (newValue) {
+                            lastName = newValue;
+                          },
+                          initialValue: lastName,
+                          validator: (String value) {
+                            return (lastName == '') ? 'Last name cannot be blank' : null;
+                          },
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                              labelText: 'Email*'
+                          ),
+                          keyboardType: TextInputType.emailAddress,
+                          onChanged: (newValue) {
+                            email = newValue;
+                          },
+                          initialValue: email,
+                          validator: (String value) {
+                            if (email == '') {
+                              return 'Email cannot be blank';
+                            }
+                            else if (!email.contains('@') || !email.contains('.')) {
+                              return 'Invalid email';
+                            }
+                            else {
+                              return null;
+                            }
+                          },
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                              labelText: 'Password*'
+                          ),
+                          onChanged: (newValue) {
+                            password = newValue;
+                          },
+                          obscureText: true,
+                          validator: (String value) {
+                            return password == '' ? 'Password cannot be blank' : null;
+                          },
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                              labelText: 'Re-Enter Password*'
+                          ),
+                          onChanged: (newValue) {
+                            reenteredPassword = newValue;
+                          },
+                          obscureText: true,
+                          validator: (String value) {
+                            return password != reenteredPassword ? 'Passwords must match' : null;
+                          },
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                              labelText: 'Company Name*'
+                          ),
+                          onChanged: (newValue) {
+                            company = newValue;
+                          },
+                          initialValue: company,
+                          validator: (String value) {
+                            return company == '' ? 'Company name cannot be blank' : null;
+                          },
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                              labelText: 'Job Title*'
+                          ),
+                          onChanged: (newValue) {
+                            title = newValue;
+                          },
+                          initialValue: title,
+                          validator: (String value) {
+                            return title == '' ? 'Job title cannot be blank' : null;
+                          },
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(20.0),
+                          alignment: Alignment.center,
+                          child: ButtonTheme(
+                              minWidth: 200.0,
+                              height: 40.0,
+                              child: RaisedButton(
+                                  child: new Text(
+                                    'Next',
+                                    style: TextStyle(fontSize: 24, color: Color(0xFF1D4489)),
+                                  ),
+                                  color: Color(0xFF6CB2E5),
+                                  onPressed: () {
+                                    if (_formKey.currentState.validate()) {
+                                      globals.currentUser = new profile.RecruiterProfile(
+                                          firstName,
+                                          lastName,
+                                          email,
+                                          password,
+                                          company,
+                                          title
+                                      );
+                                      print(globals.currentUser);
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => PageTwoRecruiter())
+                                      );
+                                    }
+                                  }
+                              )
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             )
         )
     );
@@ -237,13 +234,57 @@ class SecondPage extends State<PageTwoRecruiter> {
                   child: Column(
                     children: <Widget>[
                       Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Padding(
+                                child: Text(
+                                  'Position Information',
+                                  style: TextStyle(fontSize: 24),
+                                  //textAlign: TextAlign.center,
+                                ),
+                                padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                              ),
+                              GestureDetector(
+                                child: Icon(
+                                  Icons.help,
+                                  size: 18,
+                                ),
+                                onTap: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                            content: new Text(
+                                                "The information on this page refers to the job position that your company is hiring for and not your position information"),
+                                            actions: <Widget>[
+                                              ButtonTheme(
+                                                  minWidth: 20.0,
+                                                  height: 35.0,
+                                                  child: RaisedButton(
+                                                      child: new Text(
+                                                        'Close',
+                                                        style: TextStyle(
+                                                            fontSize: 18,
+                                                            color: Color(
+                                                                0xFF1D4489)),
+                                                      ),
+                                                      color: Color(0xFF6CB2E5),
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                      }
+                                                  )
+                                              ),
+                                            ]
+                                        );
+                                      }
+                                  );
+                                },
+                              )
+                            ]
+                          ),
                           alignment: Alignment.center,
                           padding: EdgeInsets.fromLTRB(30, 30, 30, 10),
-                          child: Text(
-                            'Position Information',
-                            style: TextStyle(fontSize: 24),
-                            textAlign: TextAlign.center,
-                          )
                       ),
                       Container(
                         alignment: Alignment.centerLeft,
@@ -324,7 +365,7 @@ class SecondPage extends State<PageTwoRecruiter> {
                             ),
                             TextFormField(
                                 decoration: const InputDecoration(
-                                    labelText: 'Desired Skills'
+                                    labelText: 'Additional Skills'
                                 ),
                                 onChanged: (newValue) {
                                   skillsDesired = newValue;
@@ -375,10 +416,7 @@ class SecondPage extends State<PageTwoRecruiter> {
                                                   salary,
                                                   timeFrame
                                               );
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(builder: (context) => PageOneRecruiter())
-                                              );
+                                              Navigator.pop(context);
                                             }
                                         )
                                     ),
@@ -404,9 +442,10 @@ class SecondPage extends State<PageTwoRecruiter> {
                                                 );
                                                 globals.allUsers[globals.currentUser.email] = globals.currentUser;
                                                 globals.newUser = true;
-                                                Navigator.push(
+                                                Navigator.pushAndRemoveUntil(
                                                     context,
-                                                    MaterialPageRoute(builder: (context) => HomePageRecruiter())
+                                                    MaterialPageRoute(builder: (context) => HomePageRecruiter()),
+                                                    ModalRoute.withName('/')
                                                 );
                                               }
                                             }

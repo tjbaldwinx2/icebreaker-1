@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:icebreaker/pages/applicant_signup.dart';
+import 'package:icebreaker/pages/home_page.dart';
+import 'package:icebreaker/pages/home_page_recruiter.dart';
+import 'package:icebreaker/pages/messaging_convos.dart';
 import 'package:icebreaker/pages/messaging_texts.dart';
+import 'package:icebreaker/pages/recruiter_signup.dart';
+import 'package:icebreaker/pages/sign_up_page.dart';
 import 'package:icebreaker/pages/startup_page.dart';
 
 void main() => runApp(MyApp());
@@ -24,7 +30,18 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         backgroundColor: Colors.white,
       ),
-      home: new StartupPage()
+      home: new StartupPage(),
+      routes: {
+        '/signup': (context) => SignUpPage(),
+        '/applicant_signup': (context) => PageOne(),
+        '/recruiter_signup': (context) => PageOneRecruiter(),
+        '/applicant_signup_page2': (context) => PageTwo(),
+        '/applicant_signup_page3': (context) => PageThree(),
+        '/recruiter_signup_page2': (context) => PageTwoRecruiter(),
+        '/home_applicant': (context) => HomePage(),
+        '/home_recruiter': (context) => HomePageRecruiter(),
+        '/message_convos': (context) => MessagingConvos()
+      },
     );
   }
 }

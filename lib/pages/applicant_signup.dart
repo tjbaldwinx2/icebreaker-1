@@ -31,6 +31,9 @@ class FirstPage extends State<PageOne>{
   String lastName = '';
   String email = '';
   String address = '';
+  String state = '';
+  String zip = '';
+  String city = '';
   String race = '';
   String ethnicity = '';
   String disability = '';
@@ -151,15 +154,51 @@ class FirstPage extends State<PageOne>{
                         ),
                         TextFormField(
                           decoration: const InputDecoration(
-                              labelText: 'Address*',
-                              helperText: 'Format as Street Address, City, State Zip Code'
+                              labelText: 'Street Address*'
                           ),
                           onChanged: (newValue) {
                             address = newValue;
                           },
                           initialValue: address,
                           validator: (String value) {
-                            return address == '' ? 'Address cannot be blank' : null;
+                            return address == '' ? 'Street address cannot be blank' : null;
+                          },
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                              labelText: 'City*'
+                          ),
+                          onChanged: (newValue) {
+                            city = newValue;
+                          },
+                          initialValue: city,
+                          validator: (String value) {
+                            return city == '' ? 'City cannot be blank' : null;
+                          },
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                              labelText: 'State*',
+                          ),
+                          onChanged: (newValue) {
+                            state = newValue;
+                          },
+                          initialValue: state,
+                          validator: (String value) {
+                            return state == '' ? 'State cannot be blank' : null;
+                          },
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                              labelText: 'Zip Code*',
+                          ),
+                          onChanged: (newValue) {
+                            zip = newValue;
+                          },
+                          initialValue: zip,
+                          keyboardType: TextInputType.number,
+                          validator: (String value) {
+                            return zip == '' ? 'Zip code cannot be blank' : null;
                           },
                         ),
                         DropdownButtonFormField(
@@ -447,18 +486,6 @@ class ThirdPage extends State<PageThree>{
                     children: <Widget>[
                       TextFormField(
                         decoration: const InputDecoration(
-                          labelText: 'Current Title*',
-                        ),
-                        onChanged: (newValue) {
-                          title = newValue;
-                        },
-                        initialValue: title,
-                        validator: (String value) {
-                          return title == '' ? 'Current title cannot be blank' : null;
-                        },
-                      ),
-                      TextFormField(
-                        decoration: const InputDecoration(
                             labelText: 'Summary*'
                         ),
                         onChanged: (newValue) {
@@ -508,6 +535,15 @@ class ThirdPage extends State<PageThree>{
                           }
                           return education == '' ? 'Highest Education Level cannot be blank' : null;
                         },
+                      ),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          labelText: 'Current or Most Recent Position Title',
+                        ),
+                        onChanged: (newValue) {
+                          title = newValue;
+                        },
+                        initialValue: title,
                       ),
                       TextFormField(
                           decoration: const InputDecoration(
@@ -560,9 +596,10 @@ class ThirdPage extends State<PageThree>{
                                           );
                                           globals.allUsers[globals.currentUser.email] = globals.currentUser;
                                           globals.newUser = true;
-                                          Navigator.push(
+                                          Navigator.pushAndRemoveUntil(
                                               context,
-                                              MaterialPageRoute(builder: (context) => HomePage())
+                                              MaterialPageRoute(builder: (context) => HomePage()),
+                                              ModalRoute.withName('/')
                                           );
                                         }
                                       }
