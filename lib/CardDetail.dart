@@ -38,10 +38,12 @@ class CardDetailsState extends State<CardDetails> {
           children: <Widget>[
             Stack(
               children: <Widget>[
+
                 Container(
                   height: 800.0,
                   width: double.infinity,
                 ),
+
                 Container(
                   padding: EdgeInsets.all(10.0),
                   height: 500.0,
@@ -57,7 +59,7 @@ class CardDetailsState extends State<CardDetails> {
                       )),
                 ),
                 Positioned(
-                  top: 420.0,
+                  top: 320.0,
                   left: 10.0,
                   right: 10.0,
                   child: Material(
@@ -81,7 +83,30 @@ class CardDetailsState extends State<CardDetails> {
                       ),
                     ),
                   ),
-                )
+                ),
+                Align(
+
+                  child: FloatingActionButton(
+                    elevation: 20,
+                    heroTag: "btn1",
+                    child: Icon(Icons.block),
+                    backgroundColor: Colors.red,
+                    onPressed: () {
+
+                    },
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: FloatingActionButton(
+                    elevation: 20,
+                    heroTag: "btn2",
+                    child: Icon(Icons.check_circle),
+                    backgroundColor: Colors.green,
+                    onPressed: () {
+                    },
+                  ),
+                ),
               ],
             ),
           ],
