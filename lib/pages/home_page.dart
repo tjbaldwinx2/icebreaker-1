@@ -53,8 +53,8 @@ class HomePageState extends State<HomePage> {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => MessagingConvos()));
             },
-
-          )],
+          )
+        ],
       ),
       body: Stack(alignment: Alignment.center, children: cardList),
     );
@@ -101,7 +101,7 @@ class HomePageState extends State<HomePage> {
     for (int x = 0; x < 5; x++) {
       cardList.add(
         Positioned(
-          top: planetCard[x].topMargin,
+          top: 5,
           child: Draggable(
               onDragEnd: (drag) {
                 removeCards(x);
@@ -124,7 +124,7 @@ class HomePageState extends State<HomePage> {
                         child: Image.network(
                           planetCard[x].cardImage,
                           width: 320.0,
-                          height: 440.0,
+                          height: 400.0,
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -166,7 +166,7 @@ class HomePageState extends State<HomePage> {
                                 image: NetworkImage(planetCard[x].cardImage),
                                 fit: BoxFit.cover),
                           ),
-                          height: 480.0,
+                          height: 470.0,
                           width: 320.0,
                         ),
                         Container(
@@ -175,12 +175,46 @@ class HomePageState extends State<HomePage> {
                             planetCard[x].cardTitle,
                             style: TextStyle(
                               fontSize: 20.0,
-                              color: Colors.purple,
+                              color: Colors.black,
                             ),
+                          ),
+                        ),
+                        Container(
+                          width: 320,
+                          //padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              ButtonTheme(
+                                  child: RaisedButton(
+                                    child: new Text(
+                                      'Reject',
+                                      style: TextStyle(fontSize: 17, color: Color(0xFF1D4489)),
+                                    ),
+                                    color : Color(0xFF6CB2E5),
+                                    onPressed: () {
+                                      removeCards(x);
+                                    },
+                                  )
+                              ),
+                              ButtonTheme(
+                                child: RaisedButton(
+                                  child: new Text(
+                                    'Apply',
+                                    style: TextStyle(fontSize: 17, color: Color(0xFF6CB2E5)),
+                                  ),
+                                  color : Color(0xFF1D4489),
+                                  onPressed: () {
+                                    removeCards(x);
+                                  },
+                                ),
+                              )
+                            ],
                           ),
                         )
                       ],
-                    )),
+                    )
+                ),
               )
             ),
           ),
