@@ -84,29 +84,6 @@ class CardDetailsState extends State<CardDetails> {
                     ),
                   ),
                 ),
-                Align(
-
-                  child: FloatingActionButton(
-                    elevation: 20,
-                    heroTag: "btn1",
-                    child: Icon(Icons.block),
-                    backgroundColor: Colors.red,
-                    onPressed: () {
-
-                    },
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: FloatingActionButton(
-                    elevation: 20,
-                    heroTag: "btn2",
-                    child: Icon(Icons.check_circle),
-                    backgroundColor: Colors.green,
-                    onPressed: () {
-                    },
-                  ),
-                ),
               ],
             ),
           ],
@@ -119,27 +96,27 @@ class CardDetailsState extends State<CardDetails> {
     switch (value) {
       case 0:
         placeDetails =
-        "The cute dog is cute";
+        "As a Software Engineer working on Google's infrastructure, you have the opportunity to work on everything from the core platform that runs the world's largest distributed network to redefining the systems that allow applications and services to provide useful information to billions of users around the globe. From our Data Center software groups to Google Cloud Platform or Gmail to YouTube, our infrastructure engineers across departments wrestle with the vast scale of a ubiquitous system, its products and services and revolutionize industry leading technologies to handle the sheer magnitude at which Google operates.";
         break;
 
       case 1:
         placeDetails =
-        "This is a baby cat. Very cute! See BuzzFeed for the 20 cutest cats!";
+        "Understands and implements The 4 Step Selling Method, achieves personal sales minimums required by “Store Gold Star” program, helps maintain a visually appealing store, practices and implements all loss prevention policies and procedures";
         break;
 
       case 2:
         placeDetails =
-        "This viral cat needs to lose weight. For more infomation, visit Reddit.";
+        "Coordinates efforts to ensure that information systems support departmental and organizational objectives Work closely with departmental customers to translate business needs into HCM system functionality. Assist in a broad range of responsible and complex computer systems administration duties to implement, configure, maintain and optimize HCM Systems. Provide technical support for a combination of desktop and software applications, support the correction of application problems; and perform a variety of technical and functional tasks relative to assigned HCM application (s). The analyst should have in-depth knowledge of the HCM software, as well as University and Medical Center operations and workflows.";
         break;
 
       case 3:
         placeDetails =
-        "This is a cute basset hound.";
+        "Seasonal Service & Engagement:Advocates of guest experience who welcome, thank, and exceed guest service expectations by focusing on guest interaction and recovery.";
         break;
 
       case 4:
         placeDetails =
-        "Because of climate change, all penguins have been extinct. There is the Linux pengun. It is the only pengun that surveived.";
+        "Known for being a great place to work and build a career, KPMG provides audit, tax and advisory services for organizations in today’s most important industries. Our growth is driven by delivering real results for our clients. It’s also enabled by our culture, which encourages individual development, embraces an inclusive environment, rewards innovative excellence and supports our communities. With qualities like those, it’s no wonder we’re consistently ranked among the best companies to work for by Fortune Magazine, Consulting Magazine, Working Mother Magazine, Diversity Inc. and others. If you’re as passionate about your future as we are, join our team.";
         break;
     }
   }

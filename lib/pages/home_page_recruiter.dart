@@ -90,7 +90,7 @@ class HomePageState extends State<HomePageRecruiter> {
     planetCard.add(
       profile_card(
           "Giselle Cole ",
-          "https://www.sccpre.cat/mypng/detail/33-339298_37-tux-linux-penguin-linux-penguin-no-background.png",
+          "https://a9p9n2x2.stackpathcdn.com/wp-content/blogs.dir/1/files/2015/11/successful-black-woman_Black-Enterprise.jpg",
           110.0,
           true),
     );
