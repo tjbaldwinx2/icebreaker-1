@@ -94,27 +94,27 @@ class CardDetailsState extends State<CardDetails> {
     switch (value) {
       case 0:
         placeDetails =
-        "I am looking for a new drug lord. I really wanna sell some cocaine and pot :D";
+        "I am looking for a systems enginnering job. ";
         break;
 
       case 1:
         placeDetails =
-        "I am the best fashion designer! I went to Trump University!";
+        "I am the best fashion designer!";
         break;
 
       case 2:
         placeDetails =
-        "Please hire me. I'll sell you  secrets for cheap if you hire me. You may also impeach Trump. ";
+        "Please hire me. I am a gender studies major looking for a job in retail. ";
         break;
 
       case 3:
         placeDetails =
-        "I need a a job so i can make money";
+        "I need a international business job.";
         break;
 
       case 4:
         placeDetails =
-        "I need a software enginnering job!!! ";
+        "I want a software enginnering job. ";
         break;
     }
   }

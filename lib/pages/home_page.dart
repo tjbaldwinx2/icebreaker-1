@@ -53,8 +53,8 @@ class HomePageState extends State<HomePage> {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => MessagingConvos()));
             },
-
-          )],
+          )
+        ],
       ),
       body: Stack(alignment: Alignment.center, children: cardList),
     );
@@ -65,34 +65,34 @@ class HomePageState extends State<HomePage> {
     List<profile_card> planetCard = new List();
     planetCard.add(
       profile_card(
-          "Golden Retriever ",
-          "http://cdn.akc.org/content/hero/golden_retriever_august_hero.jpg",
+          "Google ",
+          "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_160x56dp.png",
           70.0,
           true),
     );
     planetCard.add(
       profile_card(
-          "Baby Cat ",
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Kitten_in_Rizal_Park%2C_Manila.jpg/1280px-Kitten_in_Rizal_Park%2C_Manila.jpg",
+          "Windsor Fashions",
+          "https://media.glassdoor.com/eep/148941/1phot1.compress.gd.jpg",
           80.0,
           true),
     );
     planetCard.add(
         profile_card(
-        "Cinderblock",
-        "https://ewscripps.brightspotcdn.com/dims4/default/6bba9e9/2147483647/strip/true/crop/1000x563+0+0/resize/1280x720!/quality/90/?url=https%3A%2F%2Fewscripps.brightspotcdn.com%2Fc0%2F29%2F8f7a12854b4ab1e56ec3a13b1cae%2Fcinderblock3.png",
+        "Systems Analyst",
+        "https://www.whec.com/whecimages/repository/2019-06/university-of-rochester-.jpg",
         90.0,
         true));
     planetCard.add(
         profile_card(
-        "Basset Hound",
-        "http://geniusvets.s3.amazonaws.com/gv-dog-breeds/basset-hound-1.jpg",
+        "Target",
+        "https://corporate.target.com/_media/TargetCorp/about/images/stores/Upcoming_stores_hero.jpg?ext=.jpg",
         100.0,
         true));
     planetCard.add(
       profile_card(
-          "Linux penguin ",
-          "https://www.sccpre.cat/mypng/detail/33-339298_37-tux-linux-penguin-linux-penguin-no-background.png",
+          "KPMG ",
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/KPMG_logo.svg/1200px-KPMG_logo.svg.png",
           110.0,
           true),
     );
@@ -101,7 +101,7 @@ class HomePageState extends State<HomePage> {
     for (int x = 0; x < 5; x++) {
       cardList.add(
         Positioned(
-          top: planetCard[x].topMargin,
+          top: 5,
           child: Draggable(
               onDragEnd: (drag) {
                 removeCards(x);
@@ -124,7 +124,7 @@ class HomePageState extends State<HomePage> {
                         child: Image.network(
                           planetCard[x].cardImage,
                           width: 320.0,
-                          height: 440.0,
+                          height: 400.0,
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -166,7 +166,7 @@ class HomePageState extends State<HomePage> {
                                 image: NetworkImage(planetCard[x].cardImage),
                                 fit: BoxFit.cover),
                           ),
-                          height: 480.0,
+                          height: 470.0,
                           width: 320.0,
                         ),
                         Container(
@@ -175,12 +175,46 @@ class HomePageState extends State<HomePage> {
                             planetCard[x].cardTitle,
                             style: TextStyle(
                               fontSize: 20.0,
-                              color: Colors.purple,
+                              color: Colors.black,
                             ),
+                          ),
+                        ),
+                        Container(
+                          width: 320,
+                          //padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              ButtonTheme(
+                                  child: RaisedButton(
+                                    child: new Text(
+                                      'Reject',
+                                      style: TextStyle(fontSize: 17, color: Color(0xFF1D4489)),
+                                    ),
+                                    color : Color(0xFF6CB2E5),
+                                    onPressed: () {
+                                      removeCards(x);
+                                    },
+                                  )
+                              ),
+                              ButtonTheme(
+                                child: RaisedButton(
+                                  child: new Text(
+                                    'Apply',
+                                    style: TextStyle(fontSize: 17, color: Color(0xFF6CB2E5)),
+                                  ),
+                                  color : Color(0xFF1D4489),
+                                  onPressed: () {
+                                    removeCards(x);
+                                  },
+                                ),
+                              )
+                            ],
                           ),
                         )
                       ],
-                    )),
+                    )
+                ),
               )
             ),
           ),
