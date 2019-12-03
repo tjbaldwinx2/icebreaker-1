@@ -1,85 +1,69 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/cupertino.dart';
-
+import 'package:icebreaker/globals.dart' as globals;
+import 'package:icebreaker/pages/home_page.dart';
+import 'package:icebreaker/pages/home_page_recruiter.dart';
+import 'package:icebreaker/profile.dart';
 
 class Tutorial extends StatelessWidget{
 
   @override
   final String description =
-      "Thank you for using IceBreaker! To use our applicaiton, you swipe left to not accpect a job or applicant and left to accepct a job or canidate. On the buttom of each card, there are buttons, a checkmark and a x, to see if you want to accept that job. Buttons act the same as swipping. Happy swiping!";
+      "Thank you for using IceBreaker! When on the home screen or swiping portion of the application, "
+      "swipe left to reject a job or applicant or swipe right to accepct a job canidate or apply to a job position. On the buttom of each card, there are two buttons corresponding to "
+      "the swipe actions and function the same. Happy swiping!";
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
         title: const Text("Tutorial"),
+        automaticallyImplyLeading: false
       ),
       body: new Container(
-        child: new DescriptionTextWidget(text: description),
-      ),
-    );
-  }
-
-
-}
-class DescriptionTextWidget extends StatefulWidget {
-  final String text;
-
-  DescriptionTextWidget({@required this.text});
-
-  @override
-  _DescriptionTextWidgetState createState() => new _DescriptionTextWidgetState();
-}
-
-class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
-  String firstHalf;
-  String secondHalf;
-
-  bool flag = true;
-
-  @override
-  void initState() {
-    super.initState();
-
-    if (widget.text.length > 50) {
-      firstHalf = widget.text.substring(0, 50);
-      secondHalf = widget.text.substring(50, widget.text.length);
-    } else {
-      firstHalf = widget.text;
-      secondHalf = "";
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return new Container(
-      padding: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-      child: secondHalf.isEmpty
-          ? new Text(firstHalf)
-          : new Column(
-        children: <Widget>[
-          new Text(flag ? (firstHalf + "...") : (firstHalf + secondHalf)),
-          new InkWell(
-            child: new Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                new Text(
-                  flag ? "show more" : "show less",
-                  style: new TextStyle(color: Colors.blue),
-                ),
-              ],
+        padding: EdgeInsets.all(10),
+        child: Column(
+          children: <Widget>[
+            new Text(
+              description,
+              style: TextStyle(
+                fontSize: 20,
+              ),
             ),
-            onTap: () {
-              setState(() {
-                flag = !flag;
-              });
-            },
-          ),
-        ],
+            Container(
+              padding: EdgeInsets.all(10),
+              child: ButtonTheme(
+                  minWidth: 100.0,
+                  height: 40.0,
+                  child:
+                  RaisedButton(
+                    child: new Text(
+                      'Back',
+                      style: TextStyle(fontSize: 20, color: Color(0xFF1D4489)),
+                    ),
+                    color: Color(0xFF6CB2E5),
+                    onPressed: () {
+                      if (globals.currentUser is RecruiterProfile) {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => HomePageRecruiter()
+                        ));
+                      }
+                      else {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => HomePage()
+                        ));
+                      }
+                    },
+                  )
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
+
 }
 
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:icebreaker/pages/messaging_convos.dart';
 import 'package:icebreaker/pages/settings.dart';
+import 'package:icebreaker/pages/tutorial.dart';
 import 'package:icebreaker/profile_card.dart';
 import 'package:icebreaker/CardDetail.dart';
 import 'package:icebreaker/globals.dart' as globals;
@@ -85,13 +86,13 @@ class HomePageState extends State<HomePage> {
         true));
     planetCard.add(
         profile_card(
-        "Target",
+        "Target Cashier",
         "https://corporate.target.com/_media/TargetCorp/about/images/stores/Upcoming_stores_hero.jpg?ext=.jpg",
         100.0,
         true));
     planetCard.add(
       profile_card(
-          "KPMG ",
+          "KPMG",
           "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/KPMG_logo.svg/1200px-KPMG_logo.svg.png",
           110.0,
           true),
@@ -134,7 +135,7 @@ class HomePageState extends State<HomePage> {
                           planetCard[x].cardTitle,
                           style: TextStyle(
                             fontSize: 20.0,
-                            color: Colors.purple,
+                            color: Colors.black,
                           ),
                         ),
                       )
@@ -245,6 +246,24 @@ class HomePageState extends State<HomePage> {
                       }
                   )
               ),
+              ButtonTheme(
+                  minWidth: 20.0,
+                  height: 35.0,
+                  child: RaisedButton(
+                      child: new Text(
+                        'Help',
+                        style: TextStyle(fontSize: 18, color: Color(0xFF6CB2E5)),
+                      ),
+                      color: Color(0xFF1D4489),
+                      onPressed: () {
+                        globals.newUser = false;
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Tutorial())
+                        );
+                      }
+                  )
+              )
             ],
           );
         }

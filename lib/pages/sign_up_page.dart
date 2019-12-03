@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:icebreaker/pages/applicant_signup.dart';
 import 'package:icebreaker/pages/recruiter_signup.dart';
-import 'package:icebreaker/pages/startup_page.dart';
 
 class SignUpPage extends StatelessWidget {
 
@@ -73,10 +72,7 @@ class SignUpPage extends StatelessWidget {
                                     ),
                                     color: Color(0xFF1D4489),
                                     onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => StartupPage())
-                                      );
+                                      Navigator.pop(context);
                                     },
                                   )
                               )

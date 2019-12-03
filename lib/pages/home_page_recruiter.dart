@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icebreaker/pages/messaging_convos.dart';
 import 'package:icebreaker/pages/settings.dart';
+import 'package:icebreaker/pages/tutorial.dart';
 import 'package:icebreaker/profile_card.dart';
 import 'package:icebreaker/CardDetailsRecruiter.dart';
 import 'package:icebreaker/globals.dart' as globals;
@@ -241,6 +242,24 @@ class HomePageState extends State<HomePageRecruiter> {
                       }
                   )
               ),
+              ButtonTheme(
+                  minWidth: 20.0,
+                  height: 35.0,
+                  child: RaisedButton(
+                      child: new Text(
+                        'Help',
+                        style: TextStyle(fontSize: 18, color: Color(0xFF6CB2E5)),
+                      ),
+                      color: Color(0xFF1D4489),
+                      onPressed: () {
+                        globals.newUser = false;
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Tutorial())
+                        );
+                      }
+                  )
+              )
             ],
           );
         }
