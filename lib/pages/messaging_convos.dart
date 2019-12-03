@@ -75,32 +75,32 @@ class ChatModel {
 
   static final List<ChatModel> data = [
     ChatModel(
-      avatarUrl: "http://cdn.akc.org/content/hero/golden_retriever_august_hero.jpg",
-      name: "Golden Retriever",
+      avatarUrl: "https://images-na.ssl-images-amazon.com/images/I/61-9qMOZiOL._UY606_.jpg",
+      name: "Bob Smith",
       datetime: "20:18",
       message: "How about meeting tomorrow?",
     ),
     ChatModel(
-      avatarUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Kitten_in_Rizal_Park%2C_Manila.jpg/1280px-Kitten_in_Rizal_Park%2C_Manila.jpg",
-      name: "Baby Cat",
+      avatarUrl: "https://cdn2-www.thefashionspot.com/assets/uploads/gallery/ugliest-dresses/sibling-s15-049.jpg",
+      name: "Taylor Berry",
       datetime: "19:22",
       message: "Do you have any concerns for me?",
     ),
     ChatModel(
-      avatarUrl: "https://ewscripps.brightspotcdn.com/dims4/default/6bba9e9/2147483647/strip/true/crop/1000x563+0+0/resize/1280x720!/quality/90/?url=https%3A%2F%2Fewscripps.brightspotcdn.com%2Fc0%2F29%2F8f7a12854b4ab1e56ec3a13b1cae%2Fcinderblock3.png",
-      name: "Cinderblock",
+      avatarUrl: "https://i.pinimg.com/originals/a3/02/31/a30231aef919248cf2670d0b6d4fcd8f.jpg",
+      name: "Scott Wilson",
       datetime: "14:34",
       message: "I wasn't aware of that. Let me check",
     ),
     ChatModel(
-      avatarUrl: "http://geniusvets.s3.amazonaws.com/gv-dog-breeds/basset-hound-1.jpg",
-      name: "Basset Hound",
+      avatarUrl: "https://www.tipsyelves.com/mas_assets/cache/image/2/d/5/a/450x-11610.Jpg",
+      name: "Tyler Baldwin",
       datetime: "11:05",
       message: "I am interested in programming!",
     ),
     ChatModel(
-      avatarUrl: "https://www.sccpre.cat/mypng/detail/33-339298_37-tux-linux-penguin-linux-penguin-no-background.png",
-      name: "Linux Penguin",
+      avatarUrl: "https://a9p9n2x2.stackpathcdn.com/wp-content/blogs.dir/1/files/2015/11/successful-black-woman_Black-Enterprise.jpg",
+      name: "Giselle Cole",
       datetime: "09:46",
       message: "I understand",
     )
